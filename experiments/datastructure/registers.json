@@ -1,0 +1,27 @@
+
+{
+  "registers": [
+    {
+      "5-bit Encoding (rx)": "00000",
+      "3-bit Compressed Encoding (rx')": "000",
+      "Register Name": "x0",
+      "ABI Name": "zero",
+      "Description": "Hardwired zero register (read-only)"
+    },
+    {
+      "5-bit Encoding (rx)": "00001",
+      "3-bit Compressed Encoding (rx')": "001",
+      "Register Name": "x1",
+      "ABI Name": "ra",
+      "Description": "Return address"
+    },
+    {
+      "5-bit Encoding (rx)": "00010",
+      "3-bit Compressed Encoding (rx')": "010",
+      "Register Name": "x2",
+      "ABI Name": "sp",
+      "Description": "Stack pointer"
+    }
+    
+  ]
+}

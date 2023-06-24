@@ -1,0 +1,43 @@
+{
+  "ISA": "RV",
+  "instructions": [
+    {
+      "name": "add",
+      "assembly": "rd, rs1, rs2",
+      "description": "Addition",
+      "type": "R",
+      "quadrant": 1,
+      "arch_width": 32,
+      "extension": "I",
+      "opcode": {
+        "value": 51,
+        "length": 7
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28
+      },
+      "funct7": {
+        "value": 0,
+        "mask": 127
+      },
+      "fields": [
+        {
+          "name": "rd",
+          "position": 7,
+          "length": 5
+        },
+        {
+          "name": "rs1",
+          "position": 15,
+          "length": 5
+        },
+        {
+          "name": "rs2",
+          "position": 20,
+          "length": 5
+        }
+      ]
+    }
+  ]
+}
