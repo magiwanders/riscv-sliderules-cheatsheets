@@ -20,11 +20,9 @@ const instructions = {
       },
       funct3: {
         value: 0b000,
-        mask: 0b11100
       },
       funct7: {
         value: 0b0000000,
-        mask: 0b1111111
       },
       fields: [
         {
@@ -58,11 +56,9 @@ const instructions = {
       },
       funct3: {
         value: 0b000,
-        mask: 0b11100
       },
       funct7: {
         value: 0b0000000,
-        mask: 0b1111111
       },
       fields: [
         {
@@ -96,7 +92,9 @@ const parsedInstructions = JSON.parse(jsonData);
 
 // Example: Extracting the funct3 field using the mask
 const instruction = parsedInstructions.instructions[0];
-const funct3Mask = instruction.funct3.mask;
-const funct3Value = (instruction.opcode.value & funct3Mask) >>> funct3Mask.toString(2).length;
+// const funct3Mask = instruction.funct3.mask;
+// const funct3Value = (instruction.opcode.value & funct3Mask) >>> funct3Mask.toString(2).length;
 
-console.log(`funct3 Value: ${funct3Value.toString(2)}`); // Output: funct3 Value: 0
+// console.log(`funct3 Value: ${funct3Value.toString(2)}`); // Output: funct3 Value: 0
+
+// function
