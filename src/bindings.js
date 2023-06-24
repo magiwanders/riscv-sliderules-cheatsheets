@@ -1,5 +1,5 @@
 import { loadInto } from './load.js'
 
-window.sliderules = {
+export default sliderules = {
   loadInto: loadInto
 }
