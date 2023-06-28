@@ -64,5 +64,5 @@ jobs:
           github_token: ${{ secrets.GH_PAGES }}
           publish_dir: ./dist
           publish_branch: gh-pages
-          destination_dir: ./dist
+          # destination_dir: ./dist
           cname: sliderules.magiwanders.com
