@@ -1,60 +1,84 @@
 import fs from 'fs';
+import path from 'path';
 
-// Read the JSON data from the file
-const jsonData = JSON.parse(fs.readFileSync('isa/riscv32/instructions.json', 'utf8'));
+const currentDir = path.dirname(new URL(import.meta.url).pathname);
+const instructionsFilePath = path.join(currentDir, 'isa/riscv32/instructions.json');
 
-// Encode an instruction based on the provided data structure
+const instructionsData = fs.readFileSync(instructionsFilePath, 'utf-8');
+const instructions = JSON.parse(instructionsData);
+
+
+// Helper function to extract the register number from register name
+function extractRegisterNumber({ register }) {
+  return parseInt(register.slice(1));
+}
+
+// Helper function to convert decimal value given to hex and 32 bit binary
+function convertToBinaryAndHex({ value }) {
+  const binary = `0b${value.toString(2).padStart(32, '0')}`;
+  const hex = `0x${value.toString(16).padStart(8, '0').toUpperCase()}`;
+  return { binary, hex };
+}
+
+
 function encodeInstruction({ instruction }) {
-  const { instructions, funct3Mask, funct7Mask } = jsonData;
-  const [opcode, funct3, funct7] = instruction.split(' ')[0].split('.');
-  const operands = instruction.split(' ')[1].split(',');
+  const parts = instruction.split(" ");
+  const opcode = instructions[parts[0]].fields.opcode.value.toString(2);
+  const funct3 = instructions[parts[0]].fields.funct3.value.toString(2);
+  const funct7 = instructions[parts[0]].fields.funct7.value.toString(2);
+  const rd = extractRegisterNumber({ register: parts[1] });
+  const rs1 = extractRegisterNumber({ register: parts[2] });
+  const rs2 = extractRegisterNumber({ register: parts[3] });
 
-  for (const instr of instructions) {
-    if (instr.name === opcode) {
-      const encodedInstruction = instr.opcode.value |
-        (instr.funct3.value << instr.funct3.position) |
-        (instr.funct7.value << instr.funct7.position);
-
-      for (const field of instr.fields) {
-        const operand = operands.find(op => op.trim() === field.name);
-        if (operand) {
-          const reg = operand.trim().replace('x', '');
-          encodedInstruction |= reg << field.position;
-        }
-      }
-
-      return encodedInstruction;
-    }
-  }
-
-  return null; // Instruction not found
+  let encodedInstruction = 0;
+  encodedInstruction |= parseInt(opcode, 2) << 0;
+  encodedInstruction |= rd << 7;
+  encodedInstruction |= parseInt(funct3, 2) << 12;
+  encodedInstruction |= rs1 << 15;
+  encodedInstruction |= rs2 << 20;
+  encodedInstruction |= parseInt(funct7, 2) << 25;
+  console.log({ encodedInstruction })
+  return convertToBinaryAndHex({ value: encodedInstruction });
 }
 
-// Decode an instruction based on the provided data structure
+
 function decodeInstruction({ value }) {
-  const { instructions, funct3Mask, funct7Mask } = jsonData;
+  let mnemonic = null;
+  let operands = null;
 
-  for (const instr of instructions) {
-    const opcodeValue = (value & instr.opcode.length) >>> instr.opcode.position;
-    if (opcodeValue === instr.opcode.value) {
-      const funct3Value = (value & funct3Mask) >>> instr.funct3.position;
-      const funct7Value = (value & funct7Mask) >>> instr.funct7.position;
-      const fields = [];
+  for (const instructionName in instructions) {
+    const instruction = instructions[instructionName];
+    const opcode = instruction.fields.opcode.value.toString(2);
+    const funct3 = instruction.fields.funct3.value.toString(2);
+    const funct7 = instruction.fields.funct7.value.toString(2);
 
-      for (const field of instr.fields) {
-        const fieldValue = (value & (field.length << field.position)) >>> field.position;
-        fields.push({ [field.name]: fieldValue });
-      }
-
-      return {
-        instruction: instr.name,
-        opcode: opcodeValue,
-        funct3: funct3Value,
-        funct7: funct7Value,
-        fields
+    if (
+      (value & instruction.fields.opcode.mask) === parseInt(opcode, 2) &&
+      (value & instruction.fields.funct3.mask) === parseInt(funct3, 2) &&
+      (value & instruction.fields.funct7.mask) === parseInt(funct7, 2)
+    ) {
+      mnemonic = instructionName;
+      operands = {
+        rd: `x${(value & instruction.fields.rd.mask) >>> 7}`,
+        rs1: `x${(value & instruction.fields.rs1.mask) >>> 15}`,
+        rs2: `x${(value & instruction.fields.rs2.mask) >>> 20}`
       };
+      break;
     }
   }
 
-  return null; // Instruction not found
+  return { mnemonic, operands };
 }
+
+
+
+
+// Example usage
+const inputInstruction = 'add x1, x2, x3';
+const encodedInstruction = encodeInstruction({ instruction: inputInstruction });
+console.log('Encoded Instruction in 32 bit binary:', encodedInstruction.binary);
+console.log('Encoded Instruction in hexadecimal:', encodedInstruction.hex);
+
+
+const decodedInstruction = decodeInstruction({ value: encodedInstruction });
+console.log('Decoded Instruction:', decodedInstruction);
