@@ -1,4 +1,4 @@
-import { loadInto } from './load.js'
+import { loadInto } from './load.mjs'
 
 export default sliderules = {
   loadInto: loadInto

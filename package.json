@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build; node src/isa/api-gen.js",
     "preview": "vite preview",
     "test": ""
   },
   "devDependencies": {
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "@magiwanders/ash-js": "1.1.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/magiwanders/riscv-sliderules-cheatsheets"
