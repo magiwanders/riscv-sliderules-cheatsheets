@@ -16,7 +16,7 @@ function extractRegisterNumber({ register }) {
 function convertToBinaryAndHex({ value }) {
   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
-  return { binary, hex };
+  return { binary: binary, hex: hex };
 }
 
 // Helper function to convert decimal to binary
@@ -107,9 +107,7 @@ function decodeInstruction({ value }) {
 // Example usage
 const inputInstruction = 'sub x5, x6, x7';
 const encodedInstruction = encodeInstruction({ instruction: inputInstruction });
-console.log('Encoded Instruction in 32 bit binary:', encodedInstruction.binary);
-console.log('Encoded Instruction in hexadecimal:', encodedInstruction.hex);
-
+console.log(encodedInstruction);
 
 
 // Example usage
