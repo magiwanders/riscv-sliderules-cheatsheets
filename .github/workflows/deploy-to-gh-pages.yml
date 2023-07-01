@@ -33,14 +33,16 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
 
-      - name: Install dependencies
-        uses: bahmutov/npm-install@v1
-
-      - name: Build project
+      - name: Install token
         run: | 
           echo "@magiwanders:registry=https://npm.pkg.github.com" >> .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM }}" >> .npmrc
-          npm run build
+      
+      - name: Install dependencies 
+        uses: bahmutov/npm-install@v1
+
+      - name: Build project
+        run: npm run build
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
