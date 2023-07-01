@@ -35,6 +35,8 @@ jobs:
 
       - name: Install dependencies 
         uses: bahmutov/npm-install@v1
+        env:
+          NPM: ${{ secrets.NPM }}
 
       - name: Build project
         run: npm run build
