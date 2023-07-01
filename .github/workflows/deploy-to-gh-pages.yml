@@ -35,11 +35,13 @@ jobs:
 
       - name: Install dependencies 
         env:
+          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM }}
         uses: bahmutov/npm-install@v1
 
       - name: Build project
         env:
+          CI: true
           NODE_AUTH_TOKEN: ${{ secrets.NPM }}
         run: npm run build
 
