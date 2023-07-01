@@ -1,5 +1,14 @@
-import { loadInto } from './load.mjs'
+import { updateSpreadsheet } from './selector.mjs'
+import { Selector } from './builders.mjs'
 
-export default sliderules = {
-  loadInto: loadInto
+let sliderules = {
+  loadInto: (elementID) => {
+    document.getElementById(elementID).append(
+      Selector()
+    )
+  },
+  updateSpreadsheet: updateSpreadsheet
 }
+
+window.sliderules = sliderules
+export default sliderules 
