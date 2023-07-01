@@ -33,6 +33,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
 
+      - name: npmrcgen
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM }}" >> .npmrc
+          echo "@magiwanders=https://npm.pkg.github.com/" >> .npmrc
+
       - name: Install dependencies 
         env:
           CI: true
