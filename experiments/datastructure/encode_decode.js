@@ -3,7 +3,6 @@ import path from 'path';
 
 const currentDir = path.dirname(new URL(import.meta.url).pathname);
 const instructionsFilePath = path.join(currentDir, 'isa/riscv32/instructions.json');
-
 const instructionsData = fs.readFileSync(instructionsFilePath, 'utf-8');
 const instructions = JSON.parse(instructionsData);
 
@@ -26,18 +25,16 @@ function decimalToBinary({ decimal, numBits = 32 }) {
   if (decimal < 0) {
     decimal = (2 ** numBits) + decimal;
   }
-
   const binary = decimal.toString(2).padStart(numBits, '0');
-  return `0b${binary}`;
+  return binary;
 }
 
 // Helper function to extract the bit values using given mask
 function extractValues({ binaryvalue, binaryMask }) {
   let result = 0;
   let shiftCount = 0;
-
-
   const valueLength = binaryMask.toString(2).split('').filter((bit) => bit === '1').length;
+
   for (let i = 0; i < 32; i++) {
     const maskBit = (binaryMask >> i) & 1;
     if (maskBit === 1) {
@@ -46,7 +43,8 @@ function extractValues({ binaryvalue, binaryMask }) {
       shiftCount++;
     }
   }
-  return decimalToBinary({ decimal: result, numBits: valueLength });
+
+  return parseInt(decimalToBinary({ decimal: result, numBits: valueLength }), 2);
 }
 
 
@@ -68,41 +66,36 @@ function encodeInstruction({ instruction }) {
   encodedInstruction |= rs2 << 20;
   encodedInstruction |= parseInt(funct7, 2) << 25;
   console.log({ encodedInstruction })
+
   return convertToBinaryAndHex({ value: encodedInstruction });
 }
 
 
 // Function to decode a given assembly value
 function decodeInstruction({ value }) {
-  // TODO: Make it dynamic, like we need to fetch the fields using the opcode and describe it likewise.
-  // const binaryValue = value.slice(2); // Remove the '0b' prefix from the binary string
+  // TODO: Make it dynamic, need to fetch the fields using the opcode and describe it likewise.
   let mnemonic = null;
   let operands = null;
-  let opcodeValue = null
-  console.log(value)
 
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    //const opcode = decimalToBinary({ decimal: (value & instruction.fields.opcode.mask) >>> 0, numBits: instruction.fields.opcode.mask.toString(2).length });
+    const opcode = parseInt(decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 }), 2);
+    const funct3 = parseInt(decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 }), 2);
+    const funct7 = parseInt(decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 }), 2);
 
-    const opcode = decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 });
-    const funct3 = decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 });
-    const funct7 = decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 });
-    //console.log(extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct7.mask }))
-    //console.log(extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct7.mask }) == funct7)
     if (
       extractValues({ binaryvalue: value, binaryMask: instruction.fields.opcode.mask }) === opcode &&
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct3.mask }) === funct3
-      //extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct7.mask }) === funct7
+      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct3.mask }) === funct3 &&
+      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct7.mask }) === funct7
 
     ) {
       console.log(instructionName)
       mnemonic = instructionName;
-      // operands = {
-      //   rd: `x${extractRegisterNumber(instruction.fields.rd.mask)}`,
-      //   rs1: `x${extractRegisterNumber(instruction.fields.rs1.mask)}`,
-      //   rs2: `x${extractRegisterNumber(instruction.fields.rs2.mask)}`
-      // };
+      operands = {
+        rd: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rd.mask })}`,
+        rs1: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rs1.mask })}`,
+        rs2: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rs2.mask })}`
+      };
       break;
     }
   }
@@ -111,9 +104,8 @@ function decodeInstruction({ value }) {
 };
 
 
-
 // Example usage
-const inputInstruction = 'or x1, x2, x3';
+const inputInstruction = 'sub x5, x6, x7';
 const encodedInstruction = encodeInstruction({ instruction: inputInstruction });
 console.log('Encoded Instruction in 32 bit binary:', encodedInstruction.binary);
 console.log('Encoded Instruction in hexadecimal:', encodedInstruction.hex);
