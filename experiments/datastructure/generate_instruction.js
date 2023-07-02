@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 // Input data structure
-const instructions = {
+export const instructions = {
   add: {
     ISA: "RV",
     assembly: "rd, rs1, rs2",
@@ -171,11 +171,3 @@ const jsonData = JSON.stringify(instructions, null, 2);
 // Write the JSON data to a file
 fs.writeFileSync('isa/riscv32/instructions.json', jsonData);
 
-const parsedInstructions = JSON.parse(jsonData);
-
-// Example: Extracting the funct3 field using the mask
-// const instruction = parsedInstructions.instructions[0];
-// const funct3Mask = instruction.funct3.mask;
-// const funct3Value = (instruction.opcode.value & funct3Mask) >>> funct3Mask.toString(2).length;
-
-// console.log(`funct3 Value: ${funct3Value.toString(2)}`); // Output: funct3 Value: 0
