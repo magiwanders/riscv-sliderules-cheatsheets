@@ -1,0 +1,45 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .selector-panel {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .encoder,
+  .decoder {
+    flex-basis: 45%;
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  select {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  #result {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
