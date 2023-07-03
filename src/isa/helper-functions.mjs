@@ -7,10 +7,11 @@ export function encodeInstruction({ instruction = {} }) {
 
 // Generates single instruction data structure given its numeric value 
 export function decodeInstruction({ value = 0b0 }) {
-
+    
 }
 
-// 
+// Filter the instructions according to constraints.
 export function pruneInstructions({ constraints: {} }) {
     // assume the data structure is in scope
+    let pruneInstructions = {}
 }
