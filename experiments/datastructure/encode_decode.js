@@ -49,14 +49,14 @@ function extractValues({ binaryvalue, binaryMask }) {
 
 
 // Function to encode a given instruction
-function encodeInstruction({ instruction }) {
-  const parts = instruction.split(" ");
-  const opcode = instructions[parts[0]].fields.opcode.value.toString(2);
-  const funct3 = instructions[parts[0]].fields.funct3.value.toString(2);
-  const funct7 = instructions[parts[0]].fields.funct7.value.toString(2);
-  const rd = extractRegisterNumber({ register: parts[1] });
-  const rs1 = extractRegisterNumber({ register: parts[2] });
-  const rs2 = extractRegisterNumber({ register: parts[3] });
+function encodeInstruction({ mnemonic, operands }) {
+
+  const opcode = instructions[mnemonic].fields.opcode.value.toString(2);
+  const funct3 = instructions[mnemonic].fields.funct3.value.toString(2);
+  const funct7 = instructions[mnemonic].fields.funct7.value.toString(2);
+  const rd = extractRegisterNumber({ register: operands.rd });
+  const rs1 = extractRegisterNumber({ register: operands.rs1 });
+  const rs2 = extractRegisterNumber({ register: operands.rs1 });
 
   let encodedInstruction = 0;
   encodedInstruction |= parseInt(opcode, 2) << 0;
@@ -104,13 +104,12 @@ function decodeInstruction({ value }) {
 };
 
 
-// Example usage
-const inputInstruction = 'sub x5, x6, x7';
-const encodedInstruction = encodeInstruction({ instruction: inputInstruction });
-console.log(encodedInstruction);
-
 
 // Example usage
-const instructionValue = encodedInstruction.binary;
+const instructionValue = '0b00000000001100010110000010110011'; // Need to use '0b' representation
 const decodedInstruction = decodeInstruction({ value: instructionValue });
 console.log(decodedInstruction);
+
+// Example usage
+const encodedInstruction = encodeInstruction({ mnemonic: decodedInstruction.mnemonic, operands: decodedInstruction.operands });
+console.log(encodedInstruction);
