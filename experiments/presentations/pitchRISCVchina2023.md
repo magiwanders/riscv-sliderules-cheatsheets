@@ -4,14 +4,14 @@
 RISC-V meets Information Design: the Interactive "Sliderules" Instruction Set Architecture Cheatsheets
 
 ## Abstract  
-The "Sliderules" Cheatsheets are a solution to the current lack of a ultra-beginner friendly source of detailed documentation about the RISC-V ISA. Thanks to a careful 2D layout and alignment of the ISA information, hence the name "Sliderules", the original RV32IMAC static cheatsheets were designed with the idea of making students "play" an assembler, enabling them to quickly convert assembly to binary and back. Thanks to an ongoing LFX/RISC-V Mentorship program, the project is currently in the process of being ported to the web as an interactive application, while also being expanded to RV64GC.
+The original RISC-V ISA specification sometimes is not so friendly to beginners, and it's a bit long to find some specific instructions. We introduce a solution: the "Sliderules" Cheatsheets, which is a ultra-beginner friendly source of detailed documentation about the RISC-V ISA. Thanks to a careful 2D layout and alignment of the ISA information, hence the name "Sliderules", the original RV32IMAC static cheatsheets were designed with the idea of making students "play" an assembler, enabling them to quickly convert assembly to binary and back. Thanks to an ongoing LFX/RISC-V Mentorship program, the project is currently in the process of being ported to the web as an interactive application, while also being expanded to RV64GC.
 
 ## Keywords  
 RISC-V education, RISC-V assembly, RISC-V instructions, Interactive tool, information design, cheatsheet.
 
 ## Audience target and expected background  
 Target audience: computer organization and architecture teachers using RISC-V, and anyone who is studying RISC-V. 
-Expected background: undergraduate understanding of computer architecture and assembly is sufficient, the content of the talk are not technical themselves.
+Expected background: undergraduate understanding of computer architecture and assembly is sufficient, the content of the talk are not technical themselves.  
 This presentation would be classfied in the topic of `RISC-V 相关教育活动` (Education about RISC-V).
 
 ## What can this talk bring to the audience  
