@@ -28,7 +28,7 @@ jobs:
       contents: read
       packages: write
     env:
-      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       NPM: ${{ secrets.NPM }}
     steps:
       - uses: actions/checkout@v3
