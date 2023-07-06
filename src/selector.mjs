@@ -5,6 +5,8 @@ export function updateSpreadsheet() {
     // 1. BUILD THE CONSTRAINTS
     // 2. Filter Instructions
     // 3. Render instructions -> Siyu
+    //     3a. Tabulate instructions
+    //     3b. Render instructions
 }
 
 // User         -> Selector   -----pruneInstructions----> Pruned intructions -----Siyu Work------> Sliderules Spreadsheet
