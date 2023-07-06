@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -17,8 +19,6 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm test
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
           
   publish-gpr:
     needs: build
