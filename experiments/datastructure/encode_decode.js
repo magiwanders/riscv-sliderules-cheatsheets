@@ -49,14 +49,14 @@ function extractValues({ binaryvalue, binaryMask }) {
 
 
 // Function to encode a given instruction
-function encodeInstruction({ mnemonic, operands }) {
+export function encodeInstruction({ mnemonic, operands }) {
 
   const opcode = instructions[mnemonic].fields.opcode.value.toString(2);
   const funct3 = instructions[mnemonic].fields.funct3.value.toString(2);
   const funct7 = instructions[mnemonic].fields.funct7.value.toString(2);
   const rd = extractRegisterNumber({ register: operands.rd });
   const rs1 = extractRegisterNumber({ register: operands.rs1 });
-  const rs2 = extractRegisterNumber({ register: operands.rs1 });
+  const rs2 = extractRegisterNumber({ register: operands.rs2 });
 
   let encodedInstruction = 0;
   encodedInstruction |= parseInt(opcode, 2) << 0;
@@ -106,7 +106,7 @@ function decodeInstruction({ value }) {
 
 
 // Example usage
-const instructionValue = '0b00000000001100010110000010110011'; // Need to use '0b' representation
+const instructionValue = '0b00000000010101100000010000110011'; // Need to use '0b' representation
 const decodedInstruction = decodeInstruction({ value: instructionValue });
 console.log(decodedInstruction);
 

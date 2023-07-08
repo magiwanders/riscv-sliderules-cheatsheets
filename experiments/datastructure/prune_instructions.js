@@ -40,7 +40,10 @@ const constraints = {
     rvSize: 32,
     extensions: ["I"],
     g: false,
+    value: 0b00000000000000000000000010110011
 };
 
 const subset = filter({ instructions, constraints });
 console.log(subset);
+
+//TODO: Filtering upon bit values

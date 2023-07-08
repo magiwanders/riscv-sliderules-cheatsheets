@@ -1,5 +1,5 @@
-import { updateSpreadsheet } from './selector.mjs'
-import { Selector } from './builders.mjs'
+import { Selector } from './builders.mjs';
+import { updateResult } from './selector.mjs';
 
 let sliderules = {
   loadInto: (elementID) => {
@@ -7,8 +7,8 @@ let sliderules = {
       Selector()
     )
   },
-  updateSpreadsheet: updateSpreadsheet
-}
+  updateResult:updateResult
+};
 
-window.sliderules = sliderules
-export default sliderules 
+window.sliderules = sliderules;
+export default sliderules;
