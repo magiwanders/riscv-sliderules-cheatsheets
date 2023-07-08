@@ -106,7 +106,7 @@ function decodeInstruction({ value }) {
 
 
 // Example usage
-const instructionValue = '0b00000000010101100000010000110011'; // Need to use '0b' representation
+const instructionValue = '0b00000000001010000101001010110011'; // Need to use '0b' representation
 const decodedInstruction = decodeInstruction({ value: instructionValue });
 console.log(decodedInstruction);
 

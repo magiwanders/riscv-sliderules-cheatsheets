@@ -15,11 +15,12 @@ export function updateEncode() {
 export function updateDecode() {
     var bitValues = [];
     for (var i = 0; i < 32; i++) {
-      var input = document.getElementById('bitInput_' + i);
-      bitValues.push(input.checked ? 1 : 0);
+      var input = document.getElementById('bitSlider_' + i);
+      bitValues.push(parseInt(input.value));
     }
     // Handle the bit values as needed
     console.log('Bit Values:', bitValues);
+    return null
 
 }
     // 1. BUILD THE CONSTRAINTS
