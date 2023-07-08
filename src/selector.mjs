@@ -1,6 +1,6 @@
-import { encodeInstruction } from "./isa/helper-functions.mjs";
+import { encodeInstruction, decodeInstruction } from "./isa/helper-functions.mjs";
 
-export function updateResult() {
+export function updateEncode() {
     // Retrieve input values
     var mnemonic = document.getElementById('mnemonic').value;
     var register1 = document.getElementById('register1').value;
@@ -9,7 +9,18 @@ export function updateResult() {
     console.log("Registers: ", register1, register2, register3)
     var encodedValue = encodeInstruction({ mnemonic: mnemonic, operands: { rd: register1, rs1: register2, rs2: register3 } })
     // Output the result
-    document.getElementById('result').innerHTML = 'Encoded result: ' + encodedValue.binary;;
+    document.getElementById('encodedResult').innerHTML = 'Encoded result: ' + encodedValue.binary;;
+}
+
+export function updateDecode() {
+    var bitValues = [];
+    for (var i = 0; i < 32; i++) {
+      var input = document.getElementById('bitInput_' + i);
+      bitValues.push(input.checked ? 1 : 0);
+    }
+    // Handle the bit values as needed
+    console.log('Bit Values:', bitValues);
+
 }
     // 1. BUILD THE CONSTRAINTS
     // 2. Filter Instructions

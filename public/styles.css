@@ -1,0 +1,32 @@
+.toggle-button {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 50px;
+    height: 25px;
+    border-radius: 12.5px;
+    background-color: #ccc;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .toggle-button:checked {
+    background-color: #2196f3;
+  }
+  
+  .toggle-button:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: white;
+    transition: 0.3s;
+  }
+  
+  .toggle-button:checked:before {
+    transform: translateX(25px);
+  }
+  

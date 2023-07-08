@@ -1,13 +1,16 @@
-import { Selector } from './builders.mjs';
-import { updateResult } from './selector.mjs';
+import { Encoder, Decoder } from './builders.mjs';
+import { updateEncode, updateDecode } from './selector.mjs';
+
 
 let sliderules = {
   loadInto: (elementID) => {
     document.getElementById(elementID).append(
-      Selector()
+      Encoder(),
+      Decoder()
     )
   },
-  updateResult:updateResult
+  updateEncode:updateEncode,
+  updateDecode:updateDecode
 };
 
 window.sliderules = sliderules;

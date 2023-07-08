@@ -1,7 +1,7 @@
-export function Selector() {
+export function Encoder() {
   return _div(
     {
-      id: 'selector',
+      id: 'encoder',
     },
     [
       _input({
@@ -24,12 +24,38 @@ export function Selector() {
         type: 'text',
       }),
       _br(),
-      _button({ onclick: 'sliderules.updateResult()' }, 'Encode'),
-      _div({ id: 'result' })
+      _button({ onclick: 'sliderules.updateEncode()' }, 'Encode'),
+      _div({ id: 'encodedResult' }),
+      _br()
     ]
   );
 }
 
+
+
+export function Decoder() {
+  var numButtons = 32;
+  var sliders = [];
+  for (var i = 0; i < numButtons; i++) {
+    var label = _label({ for: 'bitInput_' + i }, + i + ': ');
+    var input = _input({ type: 'range', id: 'bitSlider_' + i, class: 'slider-button', min: 0, max: 1, step: 1  });
+    sliders.push(label, input)
+  }
+  sliders.push(
+      _br(),
+      _button({ onclick: 'sliderules.updateDecode()' }, 'Decode'),
+      _div({ id: 'decodedResult' })
+  )
+  return _div(
+    {
+      id: 'decoder',
+    },
+    sliders
+  );
+}
+
+
+
 // Recursive renderer for the encode spreadsheet
-export function EncodeSpreadsheet({ tabulatedInstructions: {} }) {
+export function EncodeSpreadsheet({ tabulatedInstructions: { } }) {
 }
