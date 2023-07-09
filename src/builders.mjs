@@ -31,8 +31,6 @@ export function Encoder() {
   );
 }
 
-
-
 export function Decoder() {
   var numButtons = 32;
   var sliders = [];
@@ -54,6 +52,13 @@ export function Decoder() {
   );
 }
 
+export function Selector() {
+  return _div({
+    id: 'selector',
+  }, [
+    _button(),
+  ])
+}
 
 
 // Recursive renderer for the encode spreadsheet
