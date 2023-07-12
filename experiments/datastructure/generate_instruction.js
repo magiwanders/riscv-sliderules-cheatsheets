@@ -166,8 +166,8 @@ export const instructions = {
 
 
 // Convert the data structure to JSON format
-const jsonData = JSON.stringify(instructions, null, 2);
+// const jsonData = JSON.stringify(instructions, null, 2);
 
-// Write the JSON data to a file
-fs.writeFileSync('isa/riscv32/instructions.json', jsonData);
+// // Write the JSON data to a file
+// fs.writeFileSync('isa/riscv32/instructions.json', jsonData);
 

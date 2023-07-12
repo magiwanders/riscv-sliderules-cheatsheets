@@ -1,5 +1,5 @@
-import { Encoder, Decoder } from './builders.mjs';
-import { updateEncode, updateDecode } from './selector.mjs';
+import { Encoder, Decoder, Pruner } from './builders.mjs';
+import { updateEncode, updateDecode, updatePruned } from './selector.mjs';
 
 
 let sliderules = {
@@ -7,11 +7,13 @@ let sliderules = {
     document.getElementById(elementID).append(
       //Selector(),
       Encoder(),
-      Decoder()
+      Decoder(),
+      Pruner()
     )
   },
   updateEncode:updateEncode,
-  updateDecode:updateDecode
+  updateDecode:updateDecode,
+  updatePruned:updatePruned
 };
 
 window.sliderules = sliderules;

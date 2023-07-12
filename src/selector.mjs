@@ -1,4 +1,4 @@
-import { encodeInstruction, decodeInstruction } from "./isa/helper-functions.mjs";
+import { encodeInstruction, decodeInstruction, pruneInstructions } from "./isa/helper-functions.mjs";
 
 export function updateEncode() {
     // Retrieve input values
@@ -9,20 +9,45 @@ export function updateEncode() {
     console.log("Registers: ", register1, register2, register3)
     var encodedValue = encodeInstruction({ mnemonic: mnemonic, operands: { rd: register1, rs1: register2, rs2: register3 } })
     // Output the result
-    document.getElementById('encodedResult').innerHTML = 'Encoded result: ' + encodedValue.binary;;
+    document.getElementById('encodedResult').innerHTML = 'Encoded result: ' + encodedValue.binary;
 }
 
 export function updateDecode() {
-    var bitValues = [];
-    for (var i = 0; i < 32; i++) {
-      var input = document.getElementById('bitSlider_' + i);
-      bitValues.push(parseInt(input.value));
-    }
-    // Handle the bit values as needed
-    console.log('Bit Values:', bitValues);
-    return null
+    var encodedValue = document.getElementById('encodedvalue').value;
+    var decodedResult = decodeInstruction({ value: encodedValue })
+
+    document.getElementById('decodedResult').innerHTML = "Decoded result: " + JSON.stringify(decodedResult, null, 2)
 
 }
+
+export function updatePruned() {
+    var bitValues = [];
+    var prunedInstructions = {}
+    var buttons = document.getElementsByClassName('bit-button1');
+    for (var i = 0; i < buttons.length; i++) {
+        var state = buttons[i].textContent;
+        var bitValue = state === '1' ? '1' : state === '0' ? '0' : "-";
+        bitValues.push(bitValue);
+    }
+
+    prunedInstructions = pruneInstructions({ constraints: bitValues })
+    console.log(prunedInstructions)
+
+
+    const beautifiedJSON = JSON.stringify(prunedInstructions, null, 2)
+        .replace(/\\n/g, '<br>')
+        .replace(/ /g, '&nbsp;')
+        .replace(/"(\w+)":/g, '<strong>"$1":</strong>')
+        .replace(/(?:\r\n|\r|\n)/g, '<br>')
+        .replace(/\s/g, '&nbsp;');
+
+    // Output the result
+    document.getElementById('prunedResult').innerHTML = 'Pruned result: ' + beautifiedJSON;
+}
+
+
+
+
     // 1. BUILD THE CONSTRAINTS
     // 2. Filter Instructions
     // 3. Render instructions -> Siyu
