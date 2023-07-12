@@ -1,27 +1,32 @@
 export function Encoder() {
   return _div(
     {
+      class: 'input-wrapper',
       id: 'encoder',
     },
     [
       _input({
         id: 'mnemonic',
         type: 'text',
+        placeholder: 'Mnemonic',
       }),
       _br(),
       _input({
         id: 'register1',
         type: 'text',
+        placeholder: 'Destination Register (rd)',
       }),
       _br(),
       _input({
         id: 'register2',
         type: 'text',
+        placeholder: 'Register 1 (rs1)',
       }),
       _br(),
       _input({
         id: 'register3',
         type: 'text',
+        placeholder: 'Register 2 (rs2)',
       }),
       _br(),
       _button({ onclick: 'sliderules.updateEncode()' }, 'Encode'),
@@ -33,24 +38,58 @@ export function Encoder() {
 
 
 
-export function Decoder() {
+export function Pruner() {
   var numButtons = 32;
   var sliders = [];
+  var states = ['', '0', '1'];
+
+  function toggleBitValue(event) {
+    var button = event.target;
+    var currentStateIndex = states.indexOf(button.textContent);
+    var nextStateIndex = (currentStateIndex + 1) % states.length;
+    button.textContent = states[nextStateIndex];
+  }
   for (var i = 0; i < numButtons; i++) {
-    var label = _label({ for: 'bitInput_' + i }, + i + ': ');
-    var input = _input({ type: 'range', id: 'bitSlider_' + i, class: 'slider-button', min: 0, max: 1, step: 1  });
-    sliders.push(label, input)
+    var button = _button({ class: 'bit-button1', textContent: '' });
+    button.addEventListener('click', toggleBitValue);
+    sliders.push(button)
   }
   sliders.push(
-      _br(),
-      _button({ onclick: 'sliderules.updateDecode()' }, 'Decode'),
-      _div({ id: 'decodedResult' })
+    _br(),
+    _button({ onclick: 'sliderules.updatePruned()' }, 'Get the instructions'),
+    _div({ id: 'prunedResult' })
   )
+  return _div(
+    {
+      id: 'pruner',
+    },
+    sliders
+  );
+}
+
+
+
+export function Decoder() {
   return _div(
     {
       id: 'decoder',
     },
-    sliders
+    [
+      _div(
+        { class: 'input-wrapper' },
+        [
+          _input({
+            id: 'encodedvalue',
+            type: 'text',
+            placeholder: 'Enter value to decode in 32 bit representation like: 0b00000000001000001000000000110011',
+          }),
+        ]
+      ),
+      _br(),
+      _button({ onclick: 'sliderules.updateDecode()' }, 'Decode'),
+      _div({ id: 'decodedResult' }),
+      _br()
+    ]
   );
 }
 

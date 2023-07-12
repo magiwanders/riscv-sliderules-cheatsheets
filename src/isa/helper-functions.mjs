@@ -45,6 +45,31 @@ function extractValues({ binaryvalue, binaryMask }) {
   return parseInt(decimalToBinary({ decimal: result, numBits: valueLength }), 2);
 }
 
+// Helpfer function to match constraints (Limited to hardcoded positions. TODO)- Pruning Helper
+function matchesConstraints(instruction, constraints) {
+  const binaryString = getInstructionBinary(instruction);
+  for (let i = 0; i < constraints.length; i++) {
+    const constraint = constraints[i];
+    if (constraint !== '-' && constraint !== binaryString[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+// Generater the 32 bit representation, registers are hardcoded to zero as of now
+function getInstructionBinary(instruction) {
+
+  const opcode = decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 });
+  const funct3 = decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 });
+  const funct7 = decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 });
+
+
+  let binaryString = `${funct7}${"00000"}${"00000"}${funct3}${"00000"}${opcode}`;
+  return binaryString
+}
+
+
 
 // Function to encode a given instruction
 export function encodeInstruction({ mnemonic, operands }) {
@@ -98,27 +123,27 @@ export function decodeInstruction({ value }) {
     }
   }
   if (mnemonic === null) {
-    return {mnemonic:"Not a valid instruction as of now, we will add more soon!", operands: null}
+    return { mnemonic: "Not a valid instruction as of now, we will add more soon!", operands: null }
   }
   return { mnemonic, operands };
 };
 
 
-// Example usage
-// const encodedInstruction = encodeInstruction({ mnemonic:  "add", operands: {rd: "x2", rs1:"x7", rs2:"x10"} });
-// console.log(encodedInstruction);
-
-// const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
-// const decodedInstruction = decodeInstruction({ value: 0b00000000101000111000000100110011 });
-// console.log(decodedInstruction);
-
-
-
 // Filter the instructions according to constraints.
-export function pruneInstructions({ constraints: { } }) {
-  // assume the data structure is in scope
-  let pruneInstructions = {}
+export function pruneInstructions({ constraints }) {
+
+  const prunedInstructions = {};
+  for (const instructionName in instructions) {
+    const instruction = instructions[instructionName];
+    if (matchesConstraints(instruction, constraints)) {
+      prunedInstructions[instructionName] = instruction;
+    }
+  }
+  return prunedInstructions;
 }
+
+
+
 
 // Makes the pruned instruction into a data structure most similar to a sliderules row
 export function tabulateInstructionEncode({ prunedInstruction: { } }) {
@@ -186,10 +211,23 @@ export function tabulateInstructionEncode({ prunedInstruction: { } }) {
 
 // Input: a mask in binary form. Output: number of ones in the mask (its width).
 export function maskWidth({ mask = 0b0 }) {
-
+  const valueLength = mask.toString(2).split('').filter((bit) => bit === '1').length;
+  console.log(valueLength)
+  return valueLength
 }
 
 // Input: a mask in binary form. Output: position of the most significant bit of the mask.
 export function maskPosition({ mask = 0b0 }) {
+  if (mask === 0) {
+    // Edge case: If the mask is 0, there is no significant bit
+    return -1;
+  }
 
+  let position = 0;
+
+  while (mask !== 0) {
+    mask = mask >> 1;
+    position++;
+  }
+  return position - 1;
 }

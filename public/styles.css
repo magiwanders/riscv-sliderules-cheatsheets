@@ -1,32 +1,57 @@
-.toggle-button {
-    position: relative;
-    appearance: none;
-    -webkit-appearance: none;
-    width: 50px;
-    height: 25px;
-    border-radius: 12.5px;
-    background-color: #ccc;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .toggle-button:checked {
-    background-color: #2196f3;
-  }
-  
-  .toggle-button:before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    background-color: white;
-    transition: 0.3s;
-  }
-  
-  .toggle-button:checked:before {
-    transform: translateX(25px);
-  }
-  
+.bit-button {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  background-color: #ccc;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.bit-button:hover {
+  background-color: #ddd;
+}
+
+
+.bit-button1 {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+  background-color: #ccc;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.bit-button1:hover {
+  background-color: #ddd;
+}
+
+
+#bitStrip {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 520px; 
+  margin-bottom: 10px;
+}
+
+.input-wrapper input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.input-wrapper input:focus::placeholder {
+  color: transparent;
+}
+
