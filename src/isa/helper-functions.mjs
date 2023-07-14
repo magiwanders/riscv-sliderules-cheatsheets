@@ -46,8 +46,8 @@ function extractValues({ binaryvalue, binaryMask }) {
 }
 
 // Helpfer function to match constraints (Limited to hardcoded positions. TODO)- Pruning Helper
-function matchesConstraints(instruction, constraints) {
-  const binaryString = getInstructionBinary(instruction);
+function matchesConstraints({instruction, constraints}) {
+  const binaryString = getInstructionBinary({instruction: instruction });
   for (let i = 0; i < constraints.length; i++) {
     const constraint = constraints[i];
     if (constraint !== '-' && constraint !== binaryString[i]) {
@@ -58,7 +58,7 @@ function matchesConstraints(instruction, constraints) {
 }
 
 // Generater the 32 bit representation, registers are hardcoded to zero as of now
-function getInstructionBinary(instruction) {
+function getInstructionBinary({instruction}) {
 
   const opcode = decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 });
   const funct3 = decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 });
@@ -70,6 +70,13 @@ function getInstructionBinary(instruction) {
 }
 
 
+
+// Helper function to check if the fields have value defined or not
+function checkFieldValues({instruction}) {
+  
+
+
+}
 
 // Function to encode a given instruction
 export function encodeInstruction({ mnemonic, operands }) {
@@ -135,7 +142,7 @@ export function pruneInstructions({ constraints }) {
   const prunedInstructions = {};
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    if (matchesConstraints(instruction, constraints)) {
+    if (matchesConstraints({instruction: instruction, constraints: constraints})) {
       prunedInstructions[instructionName] = instruction;
     }
   }
@@ -212,22 +219,10 @@ export function tabulateInstructionEncode({ prunedInstruction: { } }) {
 // Input: a mask in binary form. Output: number of ones in the mask (its width).
 export function maskWidth({ mask = 0b0 }) {
   const valueLength = mask.toString(2).split('').filter((bit) => bit === '1').length;
-  console.log(valueLength)
   return valueLength
 }
 
 // Input: a mask in binary form. Output: position of the most significant bit of the mask.
 export function maskPosition({ mask = 0b0 }) {
-  if (mask === 0) {
-    // Edge case: If the mask is 0, there is no significant bit
-    return -1;
-  }
-
-  let position = 0;
-
-  while (mask !== 0) {
-    mask = mask >> 1;
-    position++;
-  }
-  return position - 1;
+return mask === 0 ? -1 : Math.floor(Math.log2(mask));
 }
