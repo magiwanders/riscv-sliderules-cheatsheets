@@ -1,4 +1,5 @@
 import { instructions } from "./generate_instruction.js"
+import { maskWidth } from "./encode_decode.js";
 
 // function filter({ instructions = {}, constraints = {} }) {
 //     let instructionSubset = { ...instructions };
@@ -49,29 +50,38 @@ import { instructions } from "./generate_instruction.js"
 // //TODO: Filtering upon bit values
 
 
-function decimalToBinary({ decimal, numBits = 32 }) {
-  // Handle negative numbers
-  if (decimal < 0) {
-    decimal = (2 ** numBits) + decimal;
-  }
-  const binary = decimal.toString(2).padStart(numBits, '0');
-  return binary;
+// Helper function to calculate shift of the fields
+function calculateShift(mask) {
+  const binaryString = mask.toString(2).padStart(32, '0');
+  const shiftingValue = 31 - binaryString.lastIndexOf('1');
+
+  return shiftingValue;
 }
 
-function filter({ instructions = {}, constraints = [] }) {
-  const filteredInstructions = [];
+// Helper function to convert decimal value given to hex and 32 bit binary
+function convertToBinaryAndHex({ value }) {
+  const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
+  const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
+  return { binary: binary, hex: hex };
+}
 
+
+// Filter the instructions according to constraints.
+export function pruneInstructions({ constraints }) {
+
+  const prunedInstructions = {};
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    if (matchesConstraints(instruction, constraints)) {
-      filteredInstructions.push(instruction);
+    if (matchesConstraints({ instruction: instruction, constraints: constraints })) {
+      prunedInstructions[instructionName] = instruction;
     }
   }
-  return filteredInstructions;
+  return prunedInstructions;
 }
 
-function matchesConstraints(instruction, constraints) {
-  const binaryString = getInstructionBinary(instruction);
+// Helpfer function to match constraints
+function matchesConstraints({ instruction, constraints }) {
+  const binaryString = getInstructionBinary({ instruction: instruction });
   for (let i = 0; i < constraints.length; i++) {
     const constraint = constraints[i];
     if (constraint !== '-' && constraint !== binaryString[i]) {
@@ -81,19 +91,30 @@ function matchesConstraints(instruction, constraints) {
   return true;
 }
 
-function getInstructionBinary(instruction) {
 
-  const opcode = decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 });
-  const funct3 = decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 });
-  const funct7 = decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 });
+// Generater the 32 bit representation, registers are hardcoded to zero as of now
+function getInstructionBinary({ instruction }) {
 
+  const encodedFields = instruction.fields;
+  let encodedInstruction = 0;
 
-  let binaryString = `${funct7}${"00000"}${"00000"}${funct3}${"00000"}${opcode}`;
+  for (const fieldName in encodedFields) {
+    // Dealing with fields which has defined values in data structure
+    if (encodedFields[fieldName].hasOwnProperty('value')) {
+      encodedInstruction |= encodedFields[fieldName].value << calculateShift(encodedFields[fieldName].mask);
+    }
+    else {
+      // Dealing with fields which has no defined values in data structure, fetching it from operands
+      let zeros = "0".repeat(maskWidth({ mask: encodedFields[fieldName].mask }))
+      encodedInstruction |= parseInt(`${zeros}`) << calculateShift(encodedFields[fieldName].mask);
+    }
+  }
+
+  let binaryString = convertToBinaryAndHex({ value: encodedInstruction }).binary.slice(2);
   return binaryString
 }
 
-
-const constraints = ["-", "0", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
-const filtered = filter({ instructions, constraints });
+const constraints = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "1", "-", "0", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
+const filtered = pruneInstructions({ instructions, constraints });
 
 console.log(filtered);

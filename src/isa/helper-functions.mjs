@@ -10,12 +10,14 @@ function extractRegisterNumber({ register }) {
   return parseInt(register.slice(1));
 }
 
+
 // Helper function to convert decimal value given to hex and 32 bit binary
 function convertToBinaryAndHex({ value }) {
   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
   return { binary: binary, hex: hex };
 }
+
 
 // Helper function to convert decimal to binary
 function decimalToBinary({ decimal, numBits = 32 }) {
@@ -26,6 +28,7 @@ function decimalToBinary({ decimal, numBits = 32 }) {
   const binary = decimal.toString(2).padStart(numBits, '0');
   return binary;
 }
+
 
 // Helper function to extract the bit values using given mask
 function extractValues({ binaryvalue, binaryMask }) {
@@ -45,9 +48,10 @@ function extractValues({ binaryvalue, binaryMask }) {
   return parseInt(decimalToBinary({ decimal: result, numBits: valueLength }), 2);
 }
 
-// Helpfer function to match constraints (Limited to hardcoded positions. TODO)- Pruning Helper
-function matchesConstraints({instruction, constraints}) {
-  const binaryString = getInstructionBinary({instruction: instruction });
+
+// Helpfer function to match constraints
+function matchesConstraints({ instruction, constraints }) {
+  const binaryString = getInstructionBinary({ instruction: instruction });
   for (let i = 0; i < constraints.length; i++) {
     const constraint = constraints[i];
     if (constraint !== '-' && constraint !== binaryString[i]) {
@@ -57,21 +61,32 @@ function matchesConstraints({instruction, constraints}) {
   return true;
 }
 
-// Generater the 32 bit representation, registers are hardcoded to zero as of now
-function getInstructionBinary({instruction}) {
 
-  const opcode = decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 });
-  const funct3 = decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 });
-  const funct7 = decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 });
+// Generater the 32 bit representation
+function getInstructionBinary({ instruction }) {
 
+  const encodedFields = instruction.fields;
+  let encodedInstruction = 0;
 
-  let binaryString = `${funct7}${"00000"}${"00000"}${funct3}${"00000"}${opcode}`;
+  for (const fieldName in encodedFields) {
+    // Dealing with fields which has defined values in data structure
+    if (encodedFields[fieldName].hasOwnProperty('value')) {
+      encodedInstruction |= encodedFields[fieldName].value << calculateShift({ mask: encodedFields[fieldName].mask });
+    }
+    else {
+      // Dealing with fields which has no defined values in data structure, fetching it from operands
+      let zeros = "0".repeat(maskWidth({ mask: encodedFields[fieldName].mask }))
+      encodedInstruction |= parseInt(`${zeros}`) << calculateShift({ mask: encodedFields[fieldName].mask });
+    }
+  }
+
+  let binaryString = convertToBinaryAndHex({ value: encodedInstruction }).binary.slice(2);
   return binaryString
 }
 
 
 // Helper function to calculate shift of the fields
-function calculateShift(mask) {
+function calculateShift({ mask }) {
   const binaryString = mask.toString(2).padStart(32, '0');
   const shiftingValue = 31 - binaryString.lastIndexOf('1');
 
@@ -83,20 +98,18 @@ function calculateShift(mask) {
 export function encodeInstruction({ mnemonic, operands }) {
   const instruction = instructions[mnemonic];
   const encodedFields = instruction.fields;
-
   let encodedInstruction = 0;
 
   for (const fieldName in encodedFields) {
     // Dealing with fields which has defined values in data structure
     if (encodedFields[fieldName].hasOwnProperty('value')) {
-      encodedInstruction |= encodedFields[fieldName].value << calculateShift(encodedFields[fieldName].mask);
+      encodedInstruction |= encodedFields[fieldName].value << calculateShift({ mask: encodedFields[fieldName].mask });
     }
     else {
       // Dealing with fields which has no defined values in data structure, fetching it from operands
-      encodedInstruction |= extractRegisterNumber({ register: operands[fieldName] }) << calculateShift(encodedFields[fieldName].mask);
+      encodedInstruction |= extractRegisterNumber({ register: operands[fieldName] }) << calculateShift({ mask: encodedFields[fieldName].mask });
     }
   }
-
   return convertToBinaryAndHex({ value: encodedInstruction });
 }
 
@@ -138,18 +151,16 @@ export function decodeInstruction({ value }) {
 
 // Filter the instructions according to constraints.
 export function pruneInstructions({ constraints }) {
-
   const prunedInstructions = {};
+
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    if (matchesConstraints({instruction: instruction, constraints: constraints})) {
+    if (matchesConstraints({ instruction: instruction, constraints: constraints })) {
       prunedInstructions[instructionName] = instruction;
     }
   }
   return prunedInstructions;
 }
-
-
 
 
 // Makes the pruned instruction into a data structure most similar to a sliderules row
@@ -224,5 +235,5 @@ export function maskWidth({ mask = 0b0 }) {
 
 // Input: a mask in binary form. Output: position of the most significant bit of the mask.
 export function maskPosition({ mask = 0b0 }) {
-return mask === 0 ? -1 : Math.floor(Math.log2(mask));
+  return mask === 0 ? -1 : Math.floor(Math.log2(mask));
 }

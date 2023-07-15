@@ -51,7 +51,6 @@ function extractValues({ binaryvalue, binaryMask }) {
 // Input: a mask in binary form. Output: number of ones in the mask (its width).
 export function maskWidth({ mask = 0b0 }) {
   const valueLength = mask.toString(2).split('').filter((bit) => bit === '1').length;
-  console.log(valueLength)
   return valueLength
 }
 
@@ -121,11 +120,11 @@ function decodeInstruction({ value }) {
 
 
 
-// Example usage
-const encodedInstruction = encodeInstruction({ mnemonic: "and", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
-console.log(encodedInstruction);
+// // Example usage
+// const encodedInstruction = encodeInstruction({ mnemonic: "and", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
+// console.log(encodedInstruction);
 
-// Example usage
-const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
-const decodedInstruction = decodeInstruction({ value: instructionValue });
-console.log(decodedInstruction);
+// // Example usage
+// const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
+// const decodedInstruction = decodeInstruction({ value: instructionValue });
+// console.log(decodedInstruction);
