@@ -70,32 +70,32 @@ function getInstructionBinary({instruction}) {
 }
 
 
+// Helper function to calculate shift of the fields
+function calculateShift(mask) {
+  const binaryString = mask.toString(2).padStart(32, '0');
+  const shiftingValue = 31 - binaryString.lastIndexOf('1');
 
-// Helper function to check if the fields have value defined or not
-function checkFieldValues({instruction}) {
-  
-
-
+  return shiftingValue;
 }
+
 
 // Function to encode a given instruction
 export function encodeInstruction({ mnemonic, operands }) {
-
-  const opcode = instructions[mnemonic].fields.opcode.value.toString(2);
-  const funct3 = instructions[mnemonic].fields.funct3.value.toString(2);
-  const funct7 = instructions[mnemonic].fields.funct7.value.toString(2);
-  const rd = extractRegisterNumber({ register: operands.rd });
-  const rs1 = extractRegisterNumber({ register: operands.rs1 });
-  const rs2 = extractRegisterNumber({ register: operands.rs2 });
+  const instruction = instructions[mnemonic];
+  const encodedFields = instruction.fields;
 
   let encodedInstruction = 0;
-  encodedInstruction |= parseInt(opcode, 2) << 0;
-  encodedInstruction |= rd << 7;
-  encodedInstruction |= parseInt(funct3, 2) << 12;
-  encodedInstruction |= rs1 << 15;
-  encodedInstruction |= rs2 << 20;
-  encodedInstruction |= parseInt(funct7, 2) << 25;
-  console.log({ encodedInstruction })
+
+  for (const fieldName in encodedFields) {
+    // Dealing with fields which has defined values in data structure
+    if (encodedFields[fieldName].hasOwnProperty('value')) {
+      encodedInstruction |= encodedFields[fieldName].value << calculateShift(encodedFields[fieldName].mask);
+    }
+    else {
+      // Dealing with fields which has no defined values in data structure, fetching it from operands
+      encodedInstruction |= extractRegisterNumber({ register: operands[fieldName] }) << calculateShift(encodedFields[fieldName].mask);
+    }
+  }
 
   return convertToBinaryAndHex({ value: encodedInstruction });
 }
@@ -103,34 +103,34 @@ export function encodeInstruction({ mnemonic, operands }) {
 
 // Function to decode a given assembly value
 export function decodeInstruction({ value }) {
-  // TODO: Make it dynamic, need to fetch the fields using the opcode and describe it likewise.
   let mnemonic = null;
   let operands = null;
 
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    const opcode = parseInt(decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 }), 2);
-    const funct3 = parseInt(decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 }), 2);
-    const funct7 = parseInt(decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 }), 2);
+    let match = true;
 
-    if (
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.opcode.mask }) === opcode &&
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct3.mask }) === funct3 &&
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct7.mask }) === funct7
+    for (const fieldName in instruction.fields) {
+      const field = instruction.fields[fieldName];
+      const expectedValue = extractValues({ binaryvalue: value, binaryMask: field.mask });
+      if (field.hasOwnProperty('value')) {
+        const fieldValue = field.value;
+        if (expectedValue !== fieldValue) {
+          match = false;
+          break;
+        }
+      } else {
+        const registerNumber = extractValues({ binaryvalue: value, binaryMask: field.mask });
+        const registerName = `x${registerNumber}`;
+        operands = operands || {};
+        operands[fieldName] = registerName;
+      }
+    }
 
-    ) {
-      console.log(instructionName)
+    if (match) {
       mnemonic = instructionName;
-      operands = {
-        rd: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rd.mask })}`,
-        rs1: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rs1.mask })}`,
-        rs2: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rs2.mask })}`
-      };
       break;
     }
-  }
-  if (mnemonic === null) {
-    return { mnemonic: "Not a valid instruction as of now, we will add more soon!", operands: null }
   }
   return { mnemonic, operands };
 };

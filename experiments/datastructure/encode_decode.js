@@ -63,7 +63,6 @@ function calculateShift(mask) {
 }
 
 
-
 // Function to encode a given instruction
 export function encodeInstruction({ mnemonic, operands }) {
   const instruction = instructions[mnemonic];
@@ -72,12 +71,12 @@ export function encodeInstruction({ mnemonic, operands }) {
   let encodedInstruction = 0;
 
   for (const fieldName in encodedFields) {
-    //Dealing with fields which has defined values in data structure
+    // Dealing with fields which has defined values in data structure
     if (encodedFields[fieldName].hasOwnProperty('value')) {
       encodedInstruction |= encodedFields[fieldName].value << calculateShift(encodedFields[fieldName].mask);
     }
     else {
-      //     //Dealing with fields which has no defined values in data structure, fetching it from operands
+      // Dealing with fields which has no defined values in data structure, fetching it from operands
       encodedInstruction |= extractRegisterNumber({ register: operands[fieldName] }) << calculateShift(encodedFields[fieldName].mask);
     }
   }
@@ -86,47 +85,47 @@ export function encodeInstruction({ mnemonic, operands }) {
 }
 
 
-
-
 // Function to decode a given assembly value
 function decodeInstruction({ value }) {
-  // TODO: Make it dynamic, need to fetch the fields using the opcode and describe it likewise.
   let mnemonic = null;
   let operands = null;
 
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    const opcode = parseInt(decimalToBinary({ decimal: instruction.fields.opcode.value, numBits: 7 }), 2);
-    const funct3 = parseInt(decimalToBinary({ decimal: instruction.fields.funct3.value, numBits: 3 }), 2);
-    const funct7 = parseInt(decimalToBinary({ decimal: instruction.fields.funct7.value, numBits: 7 }), 2);
+    let match = true;
 
-    if (
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.opcode.mask }) === opcode &&
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct3.mask }) === funct3 &&
-      extractValues({ binaryvalue: value, binaryMask: instruction.fields.funct7.mask }) === funct7
+    for (const fieldName in instruction.fields) {
+      const field = instruction.fields[fieldName];
+      const expectedValue = extractValues({ binaryvalue: value, binaryMask: field.mask });
+      if (field.hasOwnProperty('value')) {
+        const fieldValue = field.value;
+        if (expectedValue !== fieldValue) {
+          match = false;
+          break;
+        }
+      } else {
+        const registerNumber = extractValues({ binaryvalue: value, binaryMask: field.mask });
+        const registerName = `x${registerNumber}`;
+        operands = operands || {};
+        operands[fieldName] = registerName;
+      }
+    }
 
-    ) {
-      console.log(instructionName)
+    if (match) {
       mnemonic = instructionName;
-      operands = {
-        rd: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rd.mask })}`,
-        rs1: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rs1.mask })}`,
-        rs2: `x${extractValues({ binaryvalue: value, binaryMask: instruction.fields.rs2.mask })}`
-      };
       break;
     }
   }
-
   return { mnemonic, operands };
 };
 
 
 
 // Example usage
-const instructionValue = '0b00000000111110100000010100110011'; // Need to use '0b' representation
-const decodedInstruction = decodeInstruction({ value: instructionValue });
-console.log(decodedInstruction);
+const encodedInstruction = encodeInstruction({ mnemonic: "and", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
+console.log(encodedInstruction);
 
 // Example usage
-const encodedInstruction = encodeInstruction({ mnemonic: "add", operands: { rd: 'x10', rs1: 'x20', rs2: 'x15' } });
-console.log(encodedInstruction);
+const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
+const decodedInstruction = decodeInstruction({ value: instructionValue });
+console.log(decodedInstruction);
