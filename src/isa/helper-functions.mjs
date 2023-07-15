@@ -6,13 +6,13 @@ import { instructions } from './instructions.mjs';
 // const instructionsData = fs.readFileSync(instructionsFilePath, 'utf-8');
 
 // Helper function to extract the register number from register name
-function extractRegisterNumber({ register }) {
+function _extractRegisterNumber({ register }) {
   return parseInt(register.slice(1));
 }
 
 
 // Helper function to convert decimal value given to hex and 32 bit binary
-function convertToBinaryAndHex({ value }) {
+function _convertToBinaryAndHex({ value }) {
   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
   return { binary: binary, hex: hex };
@@ -20,7 +20,7 @@ function convertToBinaryAndHex({ value }) {
 
 
 // Helper function to convert decimal to binary
-function decimalToBinary({ decimal, numBits = 32 }) {
+function _decimalToBinary({ decimal, numBits = 32 }) {
   // Handle negative numbers
   if (decimal < 0) {
     decimal = (2 ** numBits) + decimal;
@@ -31,7 +31,7 @@ function decimalToBinary({ decimal, numBits = 32 }) {
 
 
 // Helper function to extract the bit values using given mask
-function extractValues({ binaryvalue, binaryMask }) {
+function _extractValues({ binaryvalue, binaryMask }) {
   let result = 0;
   let shiftCount = 0;
   const valueLength = binaryMask.toString(2).split('').filter((bit) => bit === '1').length;
@@ -45,13 +45,13 @@ function extractValues({ binaryvalue, binaryMask }) {
     }
   }
 
-  return parseInt(decimalToBinary({ decimal: result, numBits: valueLength }), 2);
+  return parseInt(_decimalToBinary({ decimal: result, numBits: valueLength }), 2);
 }
 
 
 // Helpfer function to match constraints
-function matchesConstraints({ instruction, constraints }) {
-  const binaryString = getInstructionBinary({ instruction: instruction });
+function _matchesConstraints({ instruction, constraints }) {
+  const binaryString = _getInstructionBinary({ instruction: instruction });
   for (let i = 0; i < constraints.length; i++) {
     const constraint = constraints[i];
     if (constraint !== '-' && constraint !== binaryString[i]) {
@@ -63,7 +63,7 @@ function matchesConstraints({ instruction, constraints }) {
 
 
 // Generater the 32 bit representation
-function getInstructionBinary({ instruction }) {
+function _getInstructionBinary({ instruction }) {
 
   const encodedFields = instruction.fields;
   let encodedInstruction = 0;
@@ -71,22 +71,22 @@ function getInstructionBinary({ instruction }) {
   for (const fieldName in encodedFields) {
     // Dealing with fields which has defined values in data structure
     if (encodedFields[fieldName].hasOwnProperty('value')) {
-      encodedInstruction |= encodedFields[fieldName].value << calculateShift({ mask: encodedFields[fieldName].mask });
+      encodedInstruction |= encodedFields[fieldName].value << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
     else {
       // Dealing with fields which has no defined values in data structure, fetching it from operands
       let zeros = "0".repeat(maskWidth({ mask: encodedFields[fieldName].mask }))
-      encodedInstruction |= parseInt(`${zeros}`) << calculateShift({ mask: encodedFields[fieldName].mask });
+      encodedInstruction |= parseInt(`${zeros}`) << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
   }
 
-  let binaryString = convertToBinaryAndHex({ value: encodedInstruction }).binary.slice(2);
+  let binaryString = _convertToBinaryAndHex({ value: encodedInstruction }).binary.slice(2);
   return binaryString
 }
 
 
 // Helper function to calculate shift of the fields
-function calculateShift({ mask }) {
+function _calculateShift({ mask }) {
   const binaryString = mask.toString(2).padStart(32, '0');
   const shiftingValue = 31 - binaryString.lastIndexOf('1');
 
@@ -103,14 +103,14 @@ export function encodeInstruction({ mnemonic, operands }) {
   for (const fieldName in encodedFields) {
     // Dealing with fields which has defined values in data structure
     if (encodedFields[fieldName].hasOwnProperty('value')) {
-      encodedInstruction |= encodedFields[fieldName].value << calculateShift({ mask: encodedFields[fieldName].mask });
+      encodedInstruction |= encodedFields[fieldName].value << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
     else {
       // Dealing with fields which has no defined values in data structure, fetching it from operands
-      encodedInstruction |= extractRegisterNumber({ register: operands[fieldName] }) << calculateShift({ mask: encodedFields[fieldName].mask });
+      encodedInstruction |= _extractRegisterNumber({ register: operands[fieldName] }) << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
   }
-  return convertToBinaryAndHex({ value: encodedInstruction });
+  return _convertToBinaryAndHex({ value: encodedInstruction });
 }
 
 
@@ -125,7 +125,7 @@ export function decodeInstruction({ value }) {
 
     for (const fieldName in instruction.fields) {
       const field = instruction.fields[fieldName];
-      const expectedValue = extractValues({ binaryvalue: value, binaryMask: field.mask });
+      const expectedValue = _extractValues({ binaryvalue: value, binaryMask: field.mask });
       if (field.hasOwnProperty('value')) {
         const fieldValue = field.value;
         if (expectedValue !== fieldValue) {
@@ -133,7 +133,7 @@ export function decodeInstruction({ value }) {
           break;
         }
       } else {
-        const registerNumber = extractValues({ binaryvalue: value, binaryMask: field.mask });
+        const registerNumber = _extractValues({ binaryvalue: value, binaryMask: field.mask });
         const registerName = `x${registerNumber}`;
         operands = operands || {};
         operands[fieldName] = registerName;
@@ -155,7 +155,7 @@ export function pruneInstructions({ constraints }) {
 
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
-    if (matchesConstraints({ instruction: instruction, constraints: constraints })) {
+    if (_matchesConstraints({ instruction: instruction, constraints: constraints })) {
       prunedInstructions[instructionName] = instruction;
     }
   }
