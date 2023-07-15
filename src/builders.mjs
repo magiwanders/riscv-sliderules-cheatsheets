@@ -93,6 +93,13 @@ export function Decoder() {
   );
 }
 
+export function Selector() {
+  return _div({
+    id: 'selector',
+  }, [
+    _button(),
+  ])
+}
 
 
 // Recursive renderer for the encode spreadsheet

@@ -5,6 +5,7 @@ import { updateEncode, updateDecode, updatePruned } from './selector.mjs';
 let sliderules = {
   loadInto: (elementID) => {
     document.getElementById(elementID).append(
+      //Selector(),
       Encoder(),
       Decoder(),
       Pruner()
