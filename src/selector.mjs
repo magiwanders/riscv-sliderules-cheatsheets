@@ -9,15 +9,16 @@ export function updateEncode() {
     console.log("Registers: ", register1, register2, register3)
     var encodedValue = encodeInstruction({ mnemonic: mnemonic, operands: { rd: register1, rs1: register2, rs2: register3 } })
     // Output the result
-    document.getElementById('encodedResult').innerHTML = 'Encoded result: ' + encodedValue.binary;
+    // TODO: as soon as the visualization from Siyu is ready, the following line will be substituted by the call to the tabulate and visualization functions.
+    document.getElementById('result').innerHTML = 'Encoded result: ' + encodedValue.binary;
 }
 
 export function updateDecode() {
     var encodedValue = document.getElementById('encodedvalue').value;
     var decodedResult = decodeInstruction({ value: encodedValue })
 
-    document.getElementById('decodedResult').innerHTML = "Decoded result: " + JSON.stringify(decodedResult, null, 2)
-
+    // TODO: as soon as the visualization from Siyu is ready, the following line will be substituted by the call to the tabulate and visualization functions.
+    document.getElementById('result').innerHTML = "Decoded result: " + JSON.stringify(decodedResult, null, 2)
 }
 
 export function updatePruned() {
@@ -42,15 +43,6 @@ export function updatePruned() {
         .replace(/\s/g, '&nbsp;');
 
     // Output the result
-    document.getElementById('prunedResult').innerHTML = 'Pruned result: ' + beautifiedJSON;
+    // TODO: as soon as the visualization from Siyu is ready, the following line will be substituted by the call to the tabulate and visualization functions.
+    document.getElementById('result').innerHTML = 'Pruned result: ' + beautifiedJSON;
 }
-
-
-
-
-    // 1. BUILD THE CONSTRAINTS
-    // 2. Filter Instructions
-    // 3. Render instructions -> Siyu
-    // User         -> Selector   -----pruneInstructions----> Pruned intructions -----Siyu Work------> Sliderules Spreadsheet
-//                    ^
-//               Intructions
