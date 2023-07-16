@@ -1,3 +1,4 @@
+
 export function Encoder() {
   return _div(
     {
@@ -30,13 +31,36 @@ export function Encoder() {
       }),
       _br(),
       _button({ onclick: 'sliderules.updateEncode()' }, 'Encode'),
-      _div({ id: 'encodedResult' }),
       _br()
     ]
   );
 }
 
 
+
+
+export function Decoder() {
+  return _div(
+    {
+      id: 'decoder',
+    },
+    [
+      _div(
+        { class: 'input-wrapper' },
+        [
+          _input({
+            id: 'encodedvalue',
+            type: 'text',
+            placeholder: 'Enter value to decode in 32 bit representation like: 00000000001000001000000000110011',
+          }),
+        ]
+      ),
+      _br(),
+      _button({ onclick: 'sliderules.updateDecode()' }, 'Decode'),
+      _br()
+    ]
+  );
+}
 
 export function Pruner() {
   var numButtons = 32;
@@ -57,7 +81,6 @@ export function Pruner() {
   sliders.push(
     _br(),
     _button({ onclick: 'sliderules.updatePruned()' }, 'Get the instructions'),
-    _div({ id: 'prunedResult' })
   )
   return _div(
     {
@@ -66,41 +89,6 @@ export function Pruner() {
     sliders
   );
 }
-
-
-
-export function Decoder() {
-  return _div(
-    {
-      id: 'decoder',
-    },
-    [
-      _div(
-        { class: 'input-wrapper' },
-        [
-          _input({
-            id: 'encodedvalue',
-            type: 'text',
-            placeholder: 'Enter value to decode in 32 bit representation like: 0b00000000001000001000000000110011',
-          }),
-        ]
-      ),
-      _br(),
-      _button({ onclick: 'sliderules.updateDecode()' }, 'Decode'),
-      _div({ id: 'decodedResult' }),
-      _br()
-    ]
-  );
-}
-
-export function Selector() {
-  return _div({
-    id: 'selector',
-  }, [
-    _button(),
-  ])
-}
-
 
 // Recursive renderer for the encode spreadsheet
 export function EncodeSpreadsheet({ tabulatedInstructions: { } }) {
