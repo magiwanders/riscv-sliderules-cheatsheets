@@ -146,7 +146,47 @@ export function pruneInstructions({ constraints }) {
 
 
 // Makes the pruned instruction into a data structure most similar to a sliderules row
-export function tabulateInstructionEncode({ prunedInstruction: { } }) {
+export function tabulateInstructionEncode({ prunedInstruction }) {
+
+  const tabulatedInstructions = [];
+
+  for (const instructionName in prunedInstruction) {
+    const instruction = prunedInstruction[instructionName];
+    const row = [];
+
+    row.push({ content: instruction.extension, width: 1 });
+    row.push({ content: instruction.type, width: 1 });
+    row.push({ content: instruction.description, width: 1 });
+    row.push({ content: instruction.pseudocode, width: 1 });
+
+    row.push({ content: instructionName, width: 1 });
+
+    const operands = instruction.assembly.join(", ")
+    row.push({ content: operands, width: 1 });
+
+    let fieldNames = [];
+    for (const fieldName in instruction.fields) {
+      const field = instruction.fields[fieldName];
+      const position = maskPosition({ mask: field.mask });
+      fieldNames.push([fieldName, position])
+    }
+    fieldNames.sort((a, b) => b[1] - a[1]);
+    fieldNames = fieldNames.map(([fieldName]) => fieldName);
+    for (const fieldName of fieldNames) {
+      const field = instruction.fields[fieldName];
+      const width = maskWidth({ mask: field.mask });
+      const rowItem = { content: fieldName, width: width };
+      if (field.hasOwnProperty('value')) {
+        rowItem.value = field.value;
+      }
+      row.push(rowItem);
+    }
+
+    tabulatedInstructions.push(row);
+  }
+
+  return tabulatedInstructions;
+
   /*
   Example of tabulation:
   
@@ -211,23 +251,17 @@ export function tabulateInstructionEncode({ prunedInstruction: { } }) {
 
 // Input: a mask in binary form. Output: number of ones in the mask (its width).
 export function maskWidth({ mask = 0b0 }) {
+  mask = mask >>> 0 // this line is to convert the number to unsigned
   const valueLength = mask.toString(2).split('').filter((bit) => bit === '1').length;
-  console.log(valueLength)
   return valueLength
 }
 
 // Input: a mask in binary form. Output: position of the most significant bit of the mask.
 export function maskPosition({ mask = 0b0 }) {
+  mask = mask >>> 0 // this line is to convert the number to unsigned
   if (mask === 0) {
-    // Edge case: If the mask is 0, there is no significant bit
-    return -1;
+    return -1; // Edge case: If the mask is 0, there is no significant bit
   }
-
-  let position = 0;
-
-  while (mask !== 0) {
-    mask = mask >> 1;
-    position++;
-  }
-  return position - 1;
+  const maskInStr = mask.toString(2).padStart(32)
+  return 31 - maskInStr.search('1');
 }
