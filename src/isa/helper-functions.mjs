@@ -6,13 +6,13 @@ import { instructions } from './instructions.mjs';
 // const instructionsData = fs.readFileSync(instructionsFilePath, 'utf-8');
 
 // Helper function to extract the register number from register name
-function _extractRegisterNumber({ register }) {
+function _extractRegisterNumber({ register = "x0" }) {
   return parseInt(register.slice(1));
 }
 
 
 // Helper function to convert decimal value given to hex and 32 bit binary
-function _convertToBinaryAndHex({ value }) {
+function _convertToBinaryAndHex({ value = 0 }) {
   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
   return { binary: binary, hex: hex };
@@ -20,7 +20,7 @@ function _convertToBinaryAndHex({ value }) {
 
 
 // Helper function to convert decimal to binary
-function _decimalToBinary({ decimal, numBits = 32 }) {
+function _decimalToBinary({ decimal = 0, numBits = 32 }) {
   // Handle negative numbers
   if (decimal < 0) {
     decimal = (2 ** numBits) + decimal;
@@ -31,7 +31,7 @@ function _decimalToBinary({ decimal, numBits = 32 }) {
 
 
 // Helper function to extract the bit values using given mask
-function _extractValues({ binaryvalue, binaryMask }) {
+function _extractValues({ binaryvalue = 0b0, binaryMask = 0b0 }) {
   let result = 0;
   let shiftCount = 0;
   const valueLength = binaryMask.toString(2).split('').filter((bit) => bit === '1').length;
@@ -50,7 +50,7 @@ function _extractValues({ binaryvalue, binaryMask }) {
 
 
 // Helpfer function to match constraints
-function _matchesConstraints({ instruction, constraints }) {
+function _matchesConstraints({ instruction = {}, constraints = {} }) {
   const binaryString = _getInstructionBinary({ instruction: instruction });
   for (let i = 0; i < constraints.length; i++) {
     const constraint = constraints[i];
@@ -63,7 +63,7 @@ function _matchesConstraints({ instruction, constraints }) {
 
 
 // Generater the 32 bit representation
-function _getInstructionBinary({ instruction }) {
+function _getInstructionBinary({ instruction = {} }) {
 
   const encodedFields = instruction.fields;
   let encodedInstruction = 0;
@@ -86,7 +86,7 @@ function _getInstructionBinary({ instruction }) {
 
 
 // Helper function to calculate shift of the fields
-function _calculateShift({ mask }) {
+function _calculateShift({ mask = 0b0 }) {
   const binaryString = mask.toString(2).padStart(32, '0');
   const shiftingValue = 31 - binaryString.lastIndexOf('1');
 
@@ -95,7 +95,7 @@ function _calculateShift({ mask }) {
 
 
 // Function to encode a given instruction
-export function encodeInstruction({ mnemonic, operands }) {
+export function encodeInstruction({ mnemonic = "mnemonic", operands = {} }) {
   const instruction = instructions[mnemonic];
   const encodedFields = instruction.fields;
   let encodedInstruction = 0;
@@ -115,7 +115,7 @@ export function encodeInstruction({ mnemonic, operands }) {
 
 
 // Function to decode a given assembly value
-export function decodeInstruction({ value }) {
+export function decodeInstruction({ value = "encoding" }) {
   let mnemonic = null;
   let operands = null;
 
@@ -150,7 +150,7 @@ export function decodeInstruction({ value }) {
 
 
 // Filter the instructions according to constraints.
-export function pruneInstructions({ constraints }) {
+export function pruneInstructions({ constraints = {} }) {
   const prunedInstructions = {};
 
   for (const instructionName in instructions) {
@@ -164,7 +164,7 @@ export function pruneInstructions({ constraints }) {
 
 
 // Makes the pruned instruction into a data structure most similar to a sliderules row
-export function tabulateInstructionEncode({ prunedInstruction }) {
+export function tabulateInstructionEncode({ prunedInstruction = {} }) {
 
   const tabulatedInstructions = [];
 
@@ -283,3 +283,18 @@ export function maskPosition({ mask = 0b0 }) {
   const maskInStr = mask.toString(2).padStart(32)
   return 31 - maskInStr.search('1');
 }
+
+
+
+// Example usage
+const encodedInstruction = encodeInstruction({ mnemonic: "and", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
+console.log(encodedInstruction);
+
+// Example usage
+const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
+const decodedInstruction = decodeInstruction({ value: instructionValue });
+console.log(decodedInstruction);
+
+const pruningConstraint = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
+const filtered = pruneInstructions({ instructions, constraints: pruningConstraint });
+console.log(filtered);
