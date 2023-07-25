@@ -12,21 +12,29 @@ function _extractRegisterNumber({ register = "x0" }) {
 
 
 // Helper function to convert decimal value given to hex and 32 bit binary
-function _convertToBinaryAndHex({ value = 0 }) {
+// function _convertToBinaryAndHex({ value = 0 }) {
+//   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
+//   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
+//   return { binary: binary, hex: hex };
+// }
+
+
+// // Helper function to convert decimal to binary
+// function _decimalToBinary({ decimal = 0, numBits = 32 }) {
+//   // Handle negative numbers
+//   if (decimal < 0) {
+//     decimal = (2 ** numBits) + decimal;
+//   }
+//   const binary = decimal.toString(2).padStart(numBits, '0');
+//   return binary;
+// }
+
+
+// Helper function to convert decimal value given to hex and binary strings
+function _binaryHexString({ value = 0 }) {
   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
   return { binary: binary, hex: hex };
-}
-
-
-// Helper function to convert decimal to binary
-function _decimalToBinary({ decimal = 0, numBits = 32 }) {
-  // Handle negative numbers
-  if (decimal < 0) {
-    decimal = (2 ** numBits) + decimal;
-  }
-  const binary = decimal.toString(2).padStart(numBits, '0');
-  return binary;
 }
 
 
@@ -34,7 +42,6 @@ function _decimalToBinary({ decimal = 0, numBits = 32 }) {
 function _extractValues({ binaryvalue = 0b0, binaryMask = 0b0 }) {
   let result = 0;
   let shiftCount = 0;
-  const valueLength = binaryMask.toString(2).split('').filter((bit) => bit === '1').length;
 
   for (let i = 0; i < 32; i++) {
     const maskBit = (binaryMask >> i) & 1;
@@ -44,8 +51,7 @@ function _extractValues({ binaryvalue = 0b0, binaryMask = 0b0 }) {
       shiftCount++;
     }
   }
-
-  return parseInt(_decimalToBinary({ decimal: result, numBits: valueLength }), 2);
+  return result
 }
 
 
@@ -75,12 +81,13 @@ function _getInstructionBinary({ instruction = {} }) {
     }
     else {
       // Dealing with fields which has no defined values in data structure, fetching it from operands
-      let zeros = "0".repeat(maskWidth({ mask: encodedFields[fieldName].mask }))
-      encodedInstruction |= parseInt(`${zeros}`) << _calculateShift({ mask: encodedFields[fieldName].mask });
+      // let zeros = "0".repeat(maskWidth({ mask: encodedFields[fieldName].mask }))
+      let zeros = 0b0;
+      encodedInstruction |= zeros << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
   }
 
-  let binaryString = _convertToBinaryAndHex({ value: encodedInstruction }).binary.slice(2);
+  let binaryString = _binaryHexString({ value: encodedInstruction }).binary.slice(2);
   return binaryString
 }
 
@@ -89,7 +96,6 @@ function _getInstructionBinary({ instruction = {} }) {
 function _calculateShift({ mask = 0b0 }) {
   const binaryString = mask.toString(2).padStart(32, '0');
   const shiftingValue = 31 - binaryString.lastIndexOf('1');
-
   return shiftingValue;
 }
 
@@ -110,15 +116,14 @@ export function encodeInstruction({ mnemonic = "mnemonic", operands = {} }) {
       encodedInstruction |= _extractRegisterNumber({ register: operands[fieldName] }) << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
   }
-  return _convertToBinaryAndHex({ value: encodedInstruction });
+  return _binaryHexString({ value: encodedInstruction });
 }
 
 
 // Function to decode a given assembly value
-export function decodeInstruction({ value = "encoding" }) {
+export function decodeInstruction({ value = 0b0 }) {
   let mnemonic = null;
   let operands = null;
-
   for (const instructionName in instructions) {
     const instruction = instructions[instructionName];
     let match = true;
@@ -285,16 +290,16 @@ export function maskPosition({ mask = 0b0 }) {
 }
 
 
-
 // Example usage
-const encodedInstruction = encodeInstruction({ mnemonic: "and", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
+const encodedInstruction = encodeInstruction({ mnemonic: "sub", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
 console.log(encodedInstruction);
 
 // Example usage
 const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
-const decodedInstruction = decodeInstruction({ value: instructionValue });
+const decodedInstruction = decodeInstruction({ value: 0b01000001010011111000010110110011 });
 console.log(decodedInstruction);
 
-const pruningConstraint = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
-const filtered = pruneInstructions({ instructions, constraints: pruningConstraint });
+const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
+const filtered = pruneInstructions({ instructions, constraints });
+
 console.log(filtered);
