@@ -7,27 +7,9 @@ export function Encoder() {
     },
     [
       _input({
-        id: 'mnemonic',
+        id: 'assemblyString',
         type: 'text',
-        placeholder: 'Mnemonic',
-      }),
-      _br(),
-      _input({
-        id: 'register1',
-        type: 'text',
-        placeholder: 'Destination Register (rd)',
-      }),
-      _br(),
-      _input({
-        id: 'register2',
-        type: 'text',
-        placeholder: 'Register 1 (rs1)',
-      }),
-      _br(),
-      _input({
-        id: 'register3',
-        type: 'text',
-        placeholder: 'Register 2 (rs2)',
+        placeholder: 'Assembly string',
       }),
       _br(),
       _button({ onclick: 'sliderules.updateEncode()' }, 'Encode'),
@@ -51,7 +33,7 @@ export function Decoder() {
           _input({
             id: 'encodedvalue',
             type: 'text',
-            placeholder: 'Enter value to decode in 32 bit representation like: 00000000001000001000000000110011',
+            placeholder: 'Enter 32 bit binary value to decode, like: 00000000001000001000000000110011',
           }),
         ]
       ),

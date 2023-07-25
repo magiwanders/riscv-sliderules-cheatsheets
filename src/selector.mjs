@@ -2,19 +2,16 @@ import { encodeInstruction, decodeInstruction, pruneInstructions } from "./isa/h
 
 export function updateEncode() {
     // Retrieve input values
-    var mnemonic = document.getElementById('mnemonic').value;
-    var register1 = document.getElementById('register1').value;
-    var register2 = document.getElementById('register2').value;
-    var register3 = document.getElementById('register3').value;
-    console.log("Registers: ", register1, register2, register3)
-    var encodedValue = encodeInstruction({ mnemonic: mnemonic, operands: { rd: register1, rs1: register2, rs2: register3 } })
+    var assemblyString = document.getElementById('assemblyString').value;
+    var encodedValue = encodeInstruction({ assemblyString: assemblyString})
     // Output the result
     // TODO: as soon as the visualization from Siyu is ready, the following line will be substituted by the call to the tabulate and visualization functions.
-    document.getElementById('result').innerHTML = 'Encoded result: ' + encodedValue.binary;
+    document.getElementById('result').innerHTML = 'Encoded result: ' + encodedValue.binary.slice(2);
 }
 
 export function updateDecode() {
     var encodedValue = document.getElementById('encodedvalue').value;
+    encodedValue = parseInt(encodedValue, 2);
     var decodedResult = decodeInstruction({ value: encodedValue })
 
     // TODO: as soon as the visualization from Siyu is ready, the following line will be substituted by the call to the tabulate and visualization functions.
@@ -32,8 +29,6 @@ export function updatePruned() {
     }
 
     prunedInstructions = pruneInstructions({ constraints: bitValues })
-    console.log(prunedInstructions)
-
 
     const beautifiedJSON = JSON.stringify(prunedInstructions, null, 2)
         .replace(/\\n/g, '<br>')

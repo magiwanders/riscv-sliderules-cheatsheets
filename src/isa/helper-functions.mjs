@@ -1,9 +1,5 @@
-// import fs from 'fs';
-// import path from 'path';
 import { instructions } from './instructions.mjs';
-// const currentDir = path.dirname(new URL(import.meta.url).pathname);
-// const instructionsFilePath = path.join(currentDir, 'instructions.json');
-// const instructionsData = fs.readFileSync(instructionsFilePath, 'utf-8');
+
 
 // Helper function to extract the register number from register name
 function _extractRegisterNumber({ register = "x0" }) {
@@ -11,23 +7,24 @@ function _extractRegisterNumber({ register = "x0" }) {
 }
 
 
-// Helper function to convert decimal value given to hex and 32 bit binary
-// function _convertToBinaryAndHex({ value = 0 }) {
-//   const binary = `0b${(value >>> 0).toString(2).padStart(32, '0')}`;
-//   const hex = `0x${(value >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
-//   return { binary: binary, hex: hex };
-// }
+// Helper to transform the form {mnemonic: .. , operands: {...} } into plain assembly string 'add x1 x2 x2'
+function _assembleInstruction({ mnemonic = "mnemonic", operands = {} }) {
+  const assemblyOrder = instructions[mnemonic].assembly;
+  const operandValues = assemblyOrder.map((field) => operands[field]).join(' ');
+  return `${mnemonic} ${operandValues}`;
+}
 
 
-// // Helper function to convert decimal to binary
-// function _decimalToBinary({ decimal = 0, numBits = 32 }) {
-//   // Handle negative numbers
-//   if (decimal < 0) {
-//     decimal = (2 ** numBits) + decimal;
-//   }
-//   const binary = decimal.toString(2).padStart(numBits, '0');
-//   return binary;
-// }
+// Helper to transform the plain assembly string 'add x1 x2 x2' into the form {mnemonic: .. , operands: {...} }  
+function _parseAssemblyInstruction({assemblyString = "mnemonic op1 op2 op3"}) {
+  const [mnemonic, ...operandValues] = assemblyString.split(' ');
+  const assemblyOrder = instructions[mnemonic].assembly;
+  const operands = {};
+  assemblyOrder.forEach((field, index) => {
+    operands[field] = operandValues[index];
+  });
+  return { mnemonic, operands };
+}
 
 
 // Helper function to convert decimal value given to hex and binary strings
@@ -81,7 +78,6 @@ function _getInstructionBinary({ instruction = {} }) {
     }
     else {
       // Dealing with fields which has no defined values in data structure, fetching it from operands
-      // let zeros = "0".repeat(maskWidth({ mask: encodedFields[fieldName].mask }))
       let zeros = 0b0;
       encodedInstruction |= zeros << _calculateShift({ mask: encodedFields[fieldName].mask });
     }
@@ -101,7 +97,8 @@ function _calculateShift({ mask = 0b0 }) {
 
 
 // Function to encode a given instruction
-export function encodeInstruction({ mnemonic = "mnemonic", operands = {} }) {
+export function encodeInstruction({ assemblyString = "mnemonic op1 op2 op3"}) {
+  const { mnemonic, operands } = _parseAssemblyInstruction({assemblyString: assemblyString})
   const instruction = instructions[mnemonic];
   const encodedFields = instruction.fields;
   let encodedInstruction = 0;
@@ -150,7 +147,7 @@ export function decodeInstruction({ value = 0b0 }) {
       break;
     }
   }
-  return { mnemonic, operands };
+  return _assembleInstruction({ mnemonic: mnemonic, operands: operands });
 };
 
 
@@ -290,16 +287,16 @@ export function maskPosition({ mask = 0b0 }) {
 }
 
 
-// Example usage
-const encodedInstruction = encodeInstruction({ mnemonic: "sub", operands: { rd: 'x11', rs1: 'x31', rs2: 'x20' } });
-console.log(encodedInstruction);
+//////////////////////////////////////////////////////////////////////////////////////////
+// // Example usage
+// const encodedInstruction = encodeInstruction({assemblyString: "sub x11 x31 x20"});
+// console.log(encodedInstruction);
 
-// Example usage
-const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
-const decodedInstruction = decodeInstruction({ value: 0b01000001010011111000010110110011 });
-console.log(decodedInstruction);
+// // Example usage
+// const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
+// const decodedInstruction = decodeInstruction({ value: instructionValue });
+// console.log(decodedInstruction);
 
-const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
-const filtered = pruneInstructions({ instructions, constraints });
-
-console.log(filtered);
+// const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
+// const filtered = pruneInstructions({ instructions, constraints });
+// console.log(filtered);
