@@ -16,7 +16,7 @@ function _assembleInstruction({ mnemonic = "mnemonic", operands = {} }) {
 
 
 // Helper to transform the plain assembly string 'add x1 x2 x2' into the form {mnemonic: .. , operands: {...} }  
-function _parseAssemblyInstruction({assemblyString = "mnemonic op1 op2 op3"}) {
+function _parseAssemblyInstruction({ assemblyString = "mnemonic op1 op2 op3" }) {
   const [mnemonic, ...operandValues] = assemblyString.split(' ');
   const assemblyOrder = instructions[mnemonic].assembly;
   const operands = {};
@@ -52,12 +52,13 @@ function _extractValues({ binaryvalue = 0b0, binaryMask = 0b0 }) {
 }
 
 
-// Helpfer function to match constraints
-function _matchesConstraints({ instruction = {}, constraints = {} }) {
-  const binaryString = _getInstructionBinary({ instruction: instruction });
-  for (let i = 0; i < constraints.length; i++) {
+function _matchesConstraints({ instruction = {}, constraints = []}) {
+  const binaryArray = _getInstructionBinary({ instruction: instruction });
+
+  for (let i = 0; i < binaryArray.length; i++) {
     const constraint = constraints[i];
-    if (constraint !== '-' && constraint !== binaryString[i]) {
+
+    if (constraint !== '-' && binaryArray[i] !== 'n' && constraint !== binaryArray[i]) {
       return false;
     }
   }
@@ -65,26 +66,32 @@ function _matchesConstraints({ instruction = {}, constraints = {} }) {
 }
 
 
-// Generater the 32 bit representation
 function _getInstructionBinary({ instruction = {} }) {
-
   const encodedFields = instruction.fields;
-  let encodedInstruction = 0;
+  const binaryArray = new Array(32).fill("n"); 
 
   for (const fieldName in encodedFields) {
     // Dealing with fields which has defined values in data structure
     if (encodedFields[fieldName].hasOwnProperty('value')) {
-      encodedInstruction |= encodedFields[fieldName].value << _calculateShift({ mask: encodedFields[fieldName].mask });
-    }
-    else {
-      // Dealing with fields which has no defined values in data structure, fetching it from operands
-      let zeros = 0b0;
-      encodedInstruction |= zeros << _calculateShift({ mask: encodedFields[fieldName].mask });
+      const shift = _calculateShift({ mask: encodedFields[fieldName].mask });
+      const value = encodedFields[fieldName].value.toString(2).padStart(maskWidth({ mask: encodedFields[fieldName].mask }), "0");
+      
+      // Update the binaryArray with the bits from the value
+      for (let i = 0; i < value.length; i++) {
+        binaryArray[31 - (shift + i)] = value[value.length - 1 - i]; // Reversed order
+      }
+    } else {
+      // Dealing with fields which has no defined values in data structure
+      const shift = _calculateShift({ mask: encodedFields[fieldName].mask });
+      const width = maskWidth({ mask: encodedFields[fieldName].mask });
+      
+      // Set "n" for the corresponding range in binaryArray
+      for (let i = 0; i < width; i++) {
+        binaryArray[31 - (shift + i)] = "n"; // Reversed order
+      }
     }
   }
-
-  let binaryString = _binaryHexString({ value: encodedInstruction }).binary.slice(2);
-  return binaryString
+  return binaryArray;
 }
 
 
@@ -97,8 +104,8 @@ function _calculateShift({ mask = 0b0 }) {
 
 
 // Function to encode a given instruction
-export function encodeInstruction({ assemblyString = "mnemonic op1 op2 op3"}) {
-  const { mnemonic, operands } = _parseAssemblyInstruction({assemblyString: assemblyString})
+export function encodeInstruction({ assemblyString = "mnemonic op1 op2 op3" }) {
+  const { mnemonic, operands } = _parseAssemblyInstruction({ assemblyString: assemblyString })
   const instruction = instructions[mnemonic];
   const encodedFields = instruction.fields;
   let encodedInstruction = 0;
@@ -297,6 +304,6 @@ export function maskPosition({ mask = 0b0 }) {
 // const decodedInstruction = decodeInstruction({ value: instructionValue });
 // console.log(decodedInstruction);
 
-// const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "1", "1", "0", "0", "1", "1"];
-// const filtered = pruneInstructions({ instructions, constraints });
-// console.log(filtered);
+const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "1", "-", "1", "1", "-", "-", "-", "-", "-", "0", "0", "0", "1", "0", "-", "0", "0", "0", "1", "1", "0", "0", "1", "1"];
+const filtered = pruneInstructions({ instructions, constraints });
+console.log(filtered);
