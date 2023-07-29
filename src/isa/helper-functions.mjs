@@ -304,6 +304,6 @@ export function maskPosition({ mask = 0b0 }) {
 // const decodedInstruction = decodeInstruction({ value: instructionValue });
 // console.log(decodedInstruction);
 
-const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "1", "-", "1", "1", "-", "-", "-", "-", "-", "0", "0", "0", "1", "0", "-", "0", "0", "0", "1", "1", "0", "0", "1", "1"];
-const filtered = pruneInstructions({ instructions, constraints });
-console.log(filtered);
+// const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "1", "-", "1", "1", "-", "-", "-", "-", "-", "0", "0", "0", "1", "0", "-", "0", "0", "0", "1", "1", "0", "0", "1", "1"];
+// const filtered = pruneInstructions({ instructions, constraints });
+// console.log(filtered);

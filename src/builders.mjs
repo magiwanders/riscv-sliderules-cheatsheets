@@ -19,8 +19,6 @@ export function Encoder() {
 }
 
 
-
-
 export function Decoder() {
   return _div(
     {
@@ -54,16 +52,13 @@ export function Pruner() {
     var currentStateIndex = states.indexOf(button.textContent);
     var nextStateIndex = (currentStateIndex + 1) % states.length;
     button.textContent = states[nextStateIndex];
+    sliderules.updatePruned()
   }
   for (var i = 0; i < numButtons; i++) {
-    var button = _button({ class: 'bit-button1', textContent: '' });
+    var button = _button({ class: 'bit-button', textContent: '' });
     button.addEventListener('click', toggleBitValue);
     sliders.push(button)
   }
-  sliders.push(
-    _br(),
-    _button({ onclick: 'sliderules.updatePruned()' }, 'Get the instructions'),
-  )
   return _div(
     {
       id: 'pruner',

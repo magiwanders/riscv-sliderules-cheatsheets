@@ -21,7 +21,7 @@ export function updateDecode() {
 export function updatePruned() {
     var bitValues = [];
     var prunedInstructions = {}
-    var buttons = document.getElementsByClassName('bit-button1');
+    var buttons = document.getElementsByClassName('bit-button');
     for (var i = 0; i < buttons.length; i++) {
         var state = buttons[i].textContent;
         var bitValue = state === '1' ? '1' : state === '0' ? '0' : "-";

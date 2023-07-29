@@ -15,23 +15,6 @@
 }
 
 
-.bit-button1 {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-  background-color: #ccc;
-  color: #000;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.bit-button1:hover {
-  background-color: #ddd;
-}
-
-
 #bitStrip {
   display: flex;
   flex-wrap: wrap;
@@ -41,7 +24,7 @@
 .input-wrapper {
   position: relative;
   display: inline-block;
-  width: 520px; 
+  width: 520px;
   margin-bottom: 10px;
 }
 
@@ -54,4 +37,3 @@
 .input-wrapper input:focus::placeholder {
   color: transparent;
 }
-
