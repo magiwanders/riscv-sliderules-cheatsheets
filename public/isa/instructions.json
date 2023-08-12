@@ -1472,5 +1472,1308 @@
         "mask": -1048576
       }
     }
+  },
+  "lwu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm(rs1)"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Word Unsigned",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "imm": {
+        "2146435072": 2047,
+        "-2147483648": -2048
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "ld": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm(rs1)"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Doubleword",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "imm": {
+        "2146435072": 2047,
+        "-2147483648": -2048
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sd": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "imm(rs1)"
+    ],
+    "pseudocode": "M[rs1 + imm] = rs2",
+    "description": "Store Doubleword",
+    "type": "S",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 35,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "imm": {
+        "3968": 31,
+        "2113929216": 2016,
+        "-2147483648": -2048
+      }
+    }
+  },
+  "slli64": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 << shamt",
+    "description": "Shift Left Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "imm": {
+        "value": 0,
+        "mask": -67108864
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 66060288
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srli64": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (logical)",
+    "description": "Shift Right Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "imm": {
+        "value": 0,
+        "mask": -67108864
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 66060288
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srai64": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (arithmetic)",
+    "description": "Shift Right Arithmetic Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "imm": {
+        "value": 16,
+        "mask": -67108864
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 66060288
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "addiw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = rs1 + imm (signed immediate)",
+    "description": "Add Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "imm": {
+        "2146435072": 2047,
+        "-2147483648": -2048
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "slliw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 << shamt (64-bit)",
+    "description": "Shift Left Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srliw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (logical, 64-bit)",
+    "description": "Shift Right Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sraiw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (arithmetic, 64-bit)",
+    "description": "Shift Right Arithmetic Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 20480
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "addw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 + rs2 (64-bit)",
+    "description": "Add (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "subw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 - rs2 (64-bit)",
+    "description": "Subtract (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sllw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 << rs2 (64-bit)",
+    "description": "Shift Left Logical (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srlw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 >> rs2 (logical, 64-bit)",
+    "description": "Shift Right Logical (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sraw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 >> rs2 (arithmetic, 64-bit)",
+    "description": "Shift Right Arithmetic (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 20480
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fence_i": {
+    "ISA": "RV",
+    "assembly": [
+      "imm",
+      "rs1"
+    ],
+    "pseudocode": "fence",
+    "description": "Fence for instruction stream",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zifencei",
+    "fields": {
+      "opcode": {
+        "value": 15,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "imm": {
+        "2146435072": 2047,
+        "-2147483648": -2048
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrw": {
+    "ISA": "RV",
+    "assembly": [
+      "csr",
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = rs1",
+    "description": "Atomic Read and Write of CSR",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrs": {
+    "ISA": "RV",
+    "assembly": [
+      "csr",
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] | rs1",
+    "description": "Atomic Read and Set of CSR Bits",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrc": {
+    "ISA": "RV",
+    "assembly": [
+      "csr",
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] & (~rs1)",
+    "description": "Atomic Read and Clear of CSR Bits",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrwi": {
+    "ISA": "RV",
+    "assembly": [
+      "uimm",
+      "rd",
+      "csr"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = uimm",
+    "description": "Atomic Read and Write of CSR with Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "uimm": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrsi": {
+    "ISA": "RV",
+    "assembly": [
+      "uimm",
+      "rd",
+      "csr"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] | uimm",
+    "description": "Atomic Read and Set of CSR Bits with Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "uimm": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrci": {
+    "ISA": "RV",
+    "assembly": [
+      "uimm",
+      "rd",
+      "csr"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] & (~uimm)",
+    "description": "Atomic Read and Clear of CSR Bits with Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "uimm": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mul": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 * rs2",
+    "description": "Multiply",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulh": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (rs1 * rs2) >> XLEN",
+    "description": "Multiply High",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulhsu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (rs1 * rs2) >> XLEN",
+    "description": "Multiply High Signed Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulhu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (rs1 * rs2) >> XLEN",
+    "description": "Multiply High Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "div": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2",
+    "description": "Divide",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "divu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2",
+    "description": "Divide Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "rem": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2",
+    "description": "Remainder",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "remu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2",
+    "description": "Remainder Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 * rs2 (signed 64x64-bit multiplication, result stored in 64-bit rd)",
+    "description": "Multiply Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "divw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2 (signed 64/64-bit division, quotient stored in 64-bit rd)",
+    "description": "Divide Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "divuw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2 (unsigned 64/64-bit division, quotient stored in 64-bit rd)",
+    "description": "Divide Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "remw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2 (signed 64/64-bit remainder, result stored in 64-bit rd)",
+    "description": "Remainder Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "remuw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2 (unsigned 64/64-bit remainder, result stored in 64-bit rd)",
+    "description": "Remainder Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
   }
 }
