@@ -103,6 +103,12 @@ function _calculateShift({ mask = 0b0 }) {
 }
 
 
+//Generate immediate value
+function _generateImmediate({}) {
+  return null
+}
+
+
 // Function to encode a given instruction
 export function encodeInstruction({ assemblyString = "mnemonic op1 op2 op3" }) {
   const { mnemonic, operands } = _parseAssemblyInstruction({ assemblyString: assemblyString })
