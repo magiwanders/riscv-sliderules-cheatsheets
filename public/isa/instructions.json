@@ -416,10 +416,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -451,10 +447,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -488,10 +480,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -523,10 +511,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -560,10 +544,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -595,10 +575,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -632,10 +608,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -667,10 +639,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -704,10 +672,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -739,10 +703,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -776,10 +736,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -812,10 +768,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -834,7 +786,7 @@
       32,
       64
     ],
-    "extension": "U",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 55,
@@ -842,9 +794,6 @@
       },
       "rd": {
         "mask": 3968
-      },
-      "imm": {
-        "-4096": -4096
       }
     }
   },
@@ -861,7 +810,7 @@
       32,
       64
     ],
-    "extension": "U",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 23,
@@ -869,9 +818,6 @@
       },
       "rd": {
         "mask": 3968
-      },
-      "imm": {
-        "-4096": -4096
       }
     }
   },
@@ -888,7 +834,7 @@
       32,
       64
     ],
-    "extension": "J",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 111,
@@ -896,12 +842,6 @@
       },
       "rd": {
         "mask": 3968
-      },
-      "imm": {
-        "1044480": 1044480,
-        "1048576": 2048,
-        "2145386496": 2046,
-        "-2147483648": -1048576
       }
     }
   },
@@ -919,7 +859,7 @@
       32,
       64
     ],
-    "extension": "B",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 99,
@@ -934,12 +874,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "128": 2048,
-        "3840": 30,
-        "2113929216": 2016,
-        "-2147483648": -4096
       }
     }
   },
@@ -957,7 +891,7 @@
       32,
       64
     ],
-    "extension": "B",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 99,
@@ -972,12 +906,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "128": 2048,
-        "3840": 30,
-        "2113929216": 2016,
-        "-2147483648": -4096
       }
     }
   },
@@ -995,7 +923,7 @@
       32,
       64
     ],
-    "extension": "B",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 99,
@@ -1010,12 +938,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "128": 2048,
-        "3840": 30,
-        "2113929216": 2016,
-        "-2147483648": -4096
       }
     }
   },
@@ -1033,7 +955,7 @@
       32,
       64
     ],
-    "extension": "B",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 99,
@@ -1048,12 +970,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "128": 2048,
-        "3840": 30,
-        "2113929216": 2016,
-        "-2147483648": -4096
       }
     }
   },
@@ -1071,7 +987,7 @@
       32,
       64
     ],
-    "extension": "B",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 99,
@@ -1086,12 +1002,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "128": 2048,
-        "3840": 30,
-        "2113929216": 2016,
-        "-2147483648": -4096
       }
     }
   },
@@ -1109,7 +1019,7 @@
       32,
       64
     ],
-    "extension": "B",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 99,
@@ -1124,12 +1034,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "128": 2048,
-        "3840": 30,
-        "2113929216": 2016,
-        "-2147483648": -4096
       }
     }
   },
@@ -1147,7 +1051,7 @@
       32,
       64
     ],
-    "extension": "S",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 35,
@@ -1162,11 +1066,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "3968": 31,
-        "2113929216": 2016,
-        "-2147483648": -2048
       }
     }
   },
@@ -1184,7 +1083,7 @@
       32,
       64
     ],
-    "extension": "S",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 35,
@@ -1199,11 +1098,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "3968": 31,
-        "2113929216": 2016,
-        "-2147483648": -2048
       }
     }
   },
@@ -1221,7 +1115,7 @@
       32,
       64
     ],
-    "extension": "S",
+    "extension": "I",
     "fields": {
       "opcode": {
         "value": 35,
@@ -1236,11 +1130,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "3968": 31,
-        "2113929216": 2016,
-        "-2147483648": -2048
       }
     }
   },
@@ -1498,10 +1387,6 @@
       "rs1": {
         "mask": 1015808
       },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
-      },
       "rd": {
         "mask": 3968
       }
@@ -1531,10 +1416,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -1568,11 +1449,6 @@
       },
       "rs2": {
         "mask": 32505856
-      },
-      "imm": {
-        "3968": 31,
-        "2113929216": 2016,
-        "-2147483648": -2048
       }
     }
   },
@@ -1715,10 +1591,6 @@
       },
       "rs1": {
         "mask": 1015808
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rd": {
         "mask": 3968
@@ -2051,10 +1923,6 @@
       "funct3": {
         "value": 1,
         "mask": 28672
-      },
-      "imm": {
-        "2146435072": 2047,
-        "-2147483648": -2048
       },
       "rs1": {
         "mask": 1015808
@@ -2764,6 +2632,990 @@
       "funct7": {
         "value": 1,
         "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lr_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "aq",
+      "rl"
+    ],
+    "pseudocode": "rd = M[rs1]; if aq then aq = 0; if rl then rl = 0;",
+    "description": "Load Reserved (Word)",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 2,
+        "mask": -134217728
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sc_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "aq",
+      "rl",
+      "rs2"
+    ],
+    "pseudocode": "rd = M[rs1]; if aq then aq = 0; if rl then rl = 0; if successful SC, rd = 0; else rd = 1;",
+    "description": "Store Conditional (Word)",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 3,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoswap_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = M[rs1]; if aq then aq = 0; if rl then rl = 0; M[rs1] = rs2;",
+    "description": "Atomic Swap (Word)",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 1,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoadd_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd + rs2;",
+    "description": "Atomic Add Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 0,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoxor_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd ^ rs2;",
+    "description": "Atomic XOR Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 4,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoand_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd & rs2;",
+    "description": "Atomic AND Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 12,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoor_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd | rs2;",
+    "description": "Atomic OR Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 8,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomin_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = min(rd, rs2);",
+    "description": "Atomic Minimum Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 16,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomax_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = max(rd, rs2);",
+    "description": "Atomic Maximum Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 20,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amominu_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = minu(rd, rs2);",
+    "description": "Atomic Minimum Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 24,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomaxu_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = maxu(rd, rs2);",
+    "description": "Atomic Maximum Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 28,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lr_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1];",
+    "description": "Load Reserved Doubleword",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 2,
+        "mask": -134217728
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sc_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "if (Memory[rs1] == rd) { Memory[rs1] = rs2; rd = 1; } else rd = 0;",
+    "description": "Store Conditional Doubleword",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 3,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoswap_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rs2;",
+    "description": "Atomic Swap Doubleword",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 1,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoadd_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd + rs2;",
+    "description": "Atomic Add Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 1,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoxor_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd ^ rs2;",
+    "description": "Atomic XOR Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 4,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoand_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd & rs2;",
+    "description": "Atomic AND Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 12,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoor_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd | rs2;",
+    "description": "Atomic OR Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 8,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomin_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = min(rd, rs2);",
+    "description": "Atomic Minimum Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 16,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomax_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = max(rd, rs2);",
+    "description": "Atomic Maximum Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 20,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amominu_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = min(rd, rs2);",
+    "description": "Atomic Minimum Unsigned Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 24,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomaxu_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = max(rd, rs2);",
+    "description": "Atomic Maximum Unsigned Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 28,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
       },
       "rs1": {
         "mask": 1015808
