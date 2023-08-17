@@ -19,11 +19,20 @@ function _parseAssemblyInstruction({
 }) {
   const [mnemonic, ...operandValues] = assemblyString.split(" ");
   const assemblyOrder = instructions[mnemonic].assembly;
-  const operands = {};
-  assemblyOrder.forEach((field, index) => {
-    operands[field] = operandValues[index];
-  });
-  return { mnemonic, operands };
+  const instructionType = instructions[mnemonic].type;
+  var operands = {};
+  if (instructionType == "I" || instructionType == "R") {
+    assemblyOrder.forEach((field, index) => {
+      operands[field] = operandValues[index];
+    });
+  } else if (instructionType == "S") {
+    operands = {
+      rs1: operandValues[0],
+      rs2: operandValues[1].split("(")[1].replace(/[()]/g, ""),
+      imm: operandValues[1].split("(")[0],
+    };
+  }
+  return { mnemonic, operands, instructionType };
 }
 
 // Helper function to convert decimal value given to hex and binary strings
@@ -129,8 +138,33 @@ function _encodeImmediate({ instructionType = "I", operands = {} }) {
       }
     }
     return encodedImmediate;
+  } else if (instructionType === "S") {
+    const imm = operands.imm;
+    for (const [mask, valueMask] of Object.entries(immediateData)) {
+      let value = 0b0;
+      let maskBits = _binaryHexString({ value: mask }).binary;
+      let valueBits = _binaryHexString({ value: valueMask }).binary;
+      // Checking if mask and valueMask has same number of bits, otherwise expand/ compress according to the MSB
+      if (
+        maskBits.toString(2).replace(/0/g, "").length ===
+        valueBits.toString(2).replace(/0/g, "").length
+      ) {
+        value = imm & valueBits;
+        encodedImmediate |= value << (_calculateShift({ mask: maskBits }) + 2);
+        console.log(_binaryHexString({value: value}).binary)
+        console.log(_binaryHexString({value: encodedImmediate}).binary)
+        console.log(_calculateShift({ mask: maskBits }) + 2)
+      } else {
+        var bitPos = _calculateShift({ mask: valueBits }) + 2;
+        var bitValue = (_binaryHexString({ value: imm }).binary >> bitPos) & 1;
+        encodedImmediate |=
+          bitValue << (_calculateShift({ mask: maskBits }) + 2);
+      }
+    }
+    console.log(_binaryHexString({value:encodedImmediate}).binary)
+    return encodedImmediate;
   } else if (
-    instructionType === "S" ||
+    //instructionType === "S" ||
     instructionType === "B" ||
     instructionType === "U" ||
     instructionType === "J"
@@ -153,14 +187,12 @@ function _decodeImmediate({}) {
 
 // Function to encode a given instruction
 export function encodeInstruction({ assemblyString = "mnemonic op1 op2 op3" }) {
-  const { mnemonic, operands } = _parseAssemblyInstruction({
+  const { mnemonic, operands, instructionType } = _parseAssemblyInstruction({
     assemblyString: assemblyString,
   });
   const instruction = instructions[mnemonic];
   const encodedFields = instruction.fields;
-  const instructionType = instruction.type;
   let encodedInstruction = 0;
-
   for (const fieldName in encodedFields) {
     // Dealing with fields which has defined values in data structure
     if (encodedFields[fieldName].hasOwnProperty("value")) {
@@ -370,10 +402,12 @@ export function maskPosition({ mask = 0b0 }) {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // // Example usage
+
 // const encodedInstruction = encodeInstruction({
-//   assemblyString: "addi x11 x31 -12",
+//   //assemblyString: "sw x11, 512(x13)",
+//   assemblyString: "sb x6, -8(x4)",
 // });
-// console.log(encodedInstruction);
+// console.log(encodedInstruction.binary);
 
 // // Example usage
 // const instructionValue = encodedInstruction.binary; // Need to use '0b' representation
