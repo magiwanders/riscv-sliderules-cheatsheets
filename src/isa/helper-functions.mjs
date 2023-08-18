@@ -200,7 +200,7 @@ export function encodeInstruction({ assemblyString = "mnemonic op1 op2 op3" }) {
         encodedFields[fieldName].value <<
         _calculateShift({ mask: encodedFields[fieldName].mask });
     } else {
-      if (["rd", "rs1", "rs2"].includes(fieldName)) {
+      if (["rd", "rs1", "rs2", "rs3"].includes(fieldName)) {
         // Dealing with fields which has no defined values in data structure, fetching it from operands
         encodedInstruction |=
           _extractRegisterNumber({ register: operands[fieldName] }) <<
