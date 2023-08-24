@@ -16,6 +16,7 @@
     "registry": "https://npm.pkg.github.com/magiwanders/riscv-sliderules-cheatsheets"
   },
   "dependencies": {
-    "@magiwanders/ash-js": "^1.1.5"
+    "@magiwanders/ash-js": "^1.1.5",
+    "jspreadsheet-ce": "^4.13.4"
   }
 }

@@ -7,8 +7,9 @@ let sliderules = {
       Encoder(), 
       Decoder(),
       Pruner(),
-      _div({ id: 'result' }) // No need for each interface to have its own result div. This will be substituted by the visualization by Siyu.
-    )
+      _div({ id: 'result' }), // No need for each interface to have its own result div. This will be substituted by the visualization by Siyu.
+      _div({ id: 'spreadsheet' })
+      )
   },
   updateEncode:updateEncode,
   updateDecode:updateDecode,

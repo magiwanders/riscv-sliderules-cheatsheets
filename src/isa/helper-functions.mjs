@@ -151,9 +151,9 @@ function _encodeImmediate({ instructionType = "I", operands = {} }) {
       ) {
         value = imm & valueBits;
         encodedImmediate |= value << (_calculateShift({ mask: maskBits }) + 2);
-        console.log(_binaryHexString({value: value}).binary)
-        console.log(_binaryHexString({value: encodedImmediate}).binary)
-        console.log(_calculateShift({ mask: maskBits }) + 2)
+        console.log(_binaryHexString({ value: value }).binary);
+        console.log(_binaryHexString({ value: encodedImmediate }).binary);
+        console.log(_calculateShift({ mask: maskBits }) + 2);
       } else {
         var bitPos = _calculateShift({ mask: valueBits }) + 2;
         var bitValue = (_binaryHexString({ value: imm }).binary >> bitPos) & 1;
@@ -161,7 +161,6 @@ function _encodeImmediate({ instructionType = "I", operands = {} }) {
           bitValue << (_calculateShift({ mask: maskBits }) + 2);
       }
     }
-    console.log(_binaryHexString({value:encodedImmediate}).binary)
     return encodedImmediate;
   } else if (
     //instructionType === "S" ||
@@ -278,107 +277,107 @@ export function pruneInstructions({ constraints = {} }) {
 }
 
 // Makes the pruned instruction into a data structure most similar to a sliderules row
-export function tabulateInstructionEncode({ prunedInstruction = {} }) {
-  const tabulatedInstructions = [];
+// export function tabulateInstructionEncode({ prunedInstruction = {} }) {
+//   const tabulatedInstructions = [];
 
-  for (const instructionName in prunedInstruction) {
-    const instruction = prunedInstruction[instructionName];
-    const row = [];
+//   for (const instructionName in prunedInstruction) {
+//     const instruction = prunedInstruction[instructionName];
+//     const row = [];
 
-    row.push({ content: instruction.extension, width: 1 });
-    row.push({ content: instruction.type, width: 1 });
-    row.push({ content: instruction.description, width: 1 });
-    row.push({ content: instruction.pseudocode, width: 1 });
+//     row.push({ content: instruction.extension.toString(), width: 1 });
+//     row.push({ content: instruction.type.toString(), width: 1 });
+//     row.push({ content: instruction.description.toString(), width: 1 });
+//     row.push({ content: instruction.pseudocode.toString(), width: 1 });
 
-    row.push({ content: instructionName, width: 1 });
+//     row.push({ content: instructionName.toString(), width: 1 });
 
-    const operands = instruction.assembly.join(", ");
-    row.push({ content: operands, width: 1 });
+//     const operands = instruction.assembly.join(", ");
+//     row.push({ content: operands.toString(), width: 1 });
 
-    let fieldNames = [];
-    for (const fieldName in instruction.fields) {
-      const field = instruction.fields[fieldName];
-      const position = maskPosition({ mask: field.mask });
-      fieldNames.push([fieldName, position]);
-    }
-    fieldNames.sort((a, b) => b[1] - a[1]);
-    fieldNames = fieldNames.map(([fieldName]) => fieldName);
-    for (const fieldName of fieldNames) {
-      const field = instruction.fields[fieldName];
-      const width = maskWidth({ mask: field.mask });
-      const rowItem = { content: fieldName, width: width };
-      if (field.hasOwnProperty("value")) {
-        rowItem.value = field.value;
-      }
-      row.push(rowItem);
-    }
+//     let fieldNames = [];
+//     for (const fieldName in instruction.fields) {
+//       const field = instruction.fields[fieldName];
+//       const position = maskPosition({ mask: field.mask });
+//       fieldNames.push([fieldName.toString(), position.toString()]);
+//     }
+//     fieldNames.sort((a, b) => b[1] - a[1]);
+//     fieldNames = fieldNames.map(([fieldName]) => fieldName);
+//     for (const fieldName of fieldNames) {
+//       const field = instruction.fields[fieldName];
+//       const width = maskWidth({ mask: field.mask });
+//       const rowItem = { content: fieldName, width: width };
+//       if (field.hasOwnProperty("value")) {
+//         rowItem.value = field.value;
+//       }
+//       row.push(rowItem.toString());
+//     }
 
-    tabulatedInstructions.push(row);
-  }
+//     tabulatedInstructions.push(row);
+//   }
 
-  return tabulatedInstructions;
+//   return tabulatedInstructions;
 
-  /*
-  Example of tabulation:
-  
-  input:    
-  
-  add: {
-    ISA: "RV",
-    assembly: ["rd", "rs1", "rs2"],
-    pseudocode: 'rd = rs1 + rs2',
-    description: "Addition",
-    type: "R",
-    arch_width: [32, 64],
-    extension: "I",
-    fields: {
-      opcode: { value: 0b0110011, mask: 0b1111111 },
-      funct3: { value: 0b000, mask: 0b111 << 12 },
-      funct7: { value: 0b0000000, mask: 0b1111111 << 25 },
-      rs1: { mask: 0b11111 << 15 },
-      rs2: { mask: 0b11111 << 20 },
-      rd: { mask: 0b11111 << 7 }
-    }
-  }
+//   /*
+//   Example of tabulation:
 
-  output:
+//   input:
 
-  [
-      {
-          content: 'I',
-          width: 1,
-      },
-      {
-          content: 'R',
-          width: 1,
-      },
-      {
-          content: 'Addition',
-          width: 1,
-      },
-      ...
-      {
-          content: 'funct7',
-          width: 7,
-          value: 0b0000000
-      },
-      {
-          content: 'rs2',
-          width: 5,
-      },
-      {
-          content: 'rs1',
-          width: 5,
-      },
-      ...
-      {
-          content: 'rd = rs1 + rs2'
-          width: 1,
-      },
-      ...
-  ]
-  */
-}
+//   add: {
+//     ISA: "RV",
+//     assembly: ["rd", "rs1", "rs2"],
+//     pseudocode: 'rd = rs1 + rs2',
+//     description: "Addition",
+//     type: "R",
+//     arch_width: [32, 64],
+//     extension: "I",
+//     fields: {
+//       opcode: { value: 0b0110011, mask: 0b1111111 },
+//       funct3: { value: 0b000, mask: 0b111 << 12 },
+//       funct7: { value: 0b0000000, mask: 0b1111111 << 25 },
+//       rs1: { mask: 0b11111 << 15 },
+//       rs2: { mask: 0b11111 << 20 },
+//       rd: { mask: 0b11111 << 7 }
+//     }
+//   }
+
+//   output:
+
+//   [
+//       {
+//           content: 'I',
+//           width: 1,
+//       },
+//       {
+//           content: 'R',
+//           width: 1,
+//       },
+//       {
+//           content: 'Addition',
+//           width: 1,
+//       },
+//       ...
+//       {
+//           content: 'funct7',
+//           width: 7,
+//           value: 0b0000000
+//       },
+//       {
+//           content: 'rs2',
+//           width: 5,
+//       },
+//       {
+//           content: 'rs1',
+//           width: 5,
+//       },
+//       ...
+//       {
+//           content: 'rd = rs1 + rs2'
+//           width: 1,
+//       },
+//       ...
+//   ]
+//   */
+// }
 
 // Input: a mask in binary form. Output: number of ones in the mask (its width).
 export function maskWidth({ mask = 0b0 }) {
@@ -400,6 +399,32 @@ export function maskPosition({ mask = 0b0 }) {
   return 31 - maskInStr.search("1");
 }
 
+export function tableEncoder({ prunedInstructions: prunedInstructions }) {
+  var tabulatedData = {};
+  var generatedColumns = [];
+  tabulatedData = Object.values(prunedInstructions);
+
+  tabulatedData = tabulatedData.map((item) => {
+    var fieldKeys = Object.keys(item.fields || {});
+    var fieldKeysString = fieldKeys.join(", ");
+
+    return { ...item, fields: fieldKeysString };
+  });
+
+  generatedColumns = [
+    { title: "ISA", width: 25 },
+    { title: "Mnemonic", width: 100 },
+    { title: "Pseudocode", width: 300 },
+    { title: "Description", width: 350 },
+    { title: "Type", width: 50 },
+    { title: "Architecture", width: 100 },
+    { title: "Extension", width: 50 },
+    { title: "Fields", width: 300 },
+  ];
+  console.log(tabulatedData);
+  return { tabulatedData, generatedColumns };
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // // Example usage
 
@@ -414,6 +439,6 @@ export function maskPosition({ mask = 0b0 }) {
 // const decodedInstruction = decodeInstruction({ value: instructionValue });
 // console.log(decodedInstruction);
 
-// const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "1", "-", "1", "1", "-", "-", "-", "-", "-", "0", "0", "0", "1", "0", "-", "0", "0", "0", "1", "1", "0", "0", "1", "1"];
-// const filtered = pruneInstructions({ instructions, constraints });
-// console.log(filtered);
+// const constraints = ["-", "1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "0", "0", "0", "1", "1", "0", "0", "1", "1"];
+// const prunedInstructions = pruneInstructions({ instructions, constraints });
+// tableEncoder({prunedInstructions: prunedInstructions})

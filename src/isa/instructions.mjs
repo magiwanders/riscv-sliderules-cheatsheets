@@ -3517,4 +3517,3 @@ export const instructions = {
 };
 
 // Done: RV[32/64]G+C
-// TO-DO: RV[32/64]C
