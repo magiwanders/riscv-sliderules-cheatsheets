@@ -151,9 +151,6 @@ function _encodeImmediate({ instructionType = "I", operands = {} }) {
       ) {
         value = imm & valueBits;
         encodedImmediate |= value << (_calculateShift({ mask: maskBits }) + 2);
-        console.log(_binaryHexString({ value: value }).binary);
-        console.log(_binaryHexString({ value: encodedImmediate }).binary);
-        console.log(_calculateShift({ mask: maskBits }) + 2);
       } else {
         var bitPos = _calculateShift({ mask: valueBits }) + 2;
         var bitValue = (_binaryHexString({ value: imm }).binary >> bitPos) & 1;
@@ -421,7 +418,6 @@ export function tableEncoder({ prunedInstructions: prunedInstructions }) {
     { title: "Extension", width: 50 },
     { title: "Fields", width: 300 },
   ];
-  console.log(tabulatedData);
   return { tabulatedData, generatedColumns };
 }
 
