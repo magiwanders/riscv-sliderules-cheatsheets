@@ -414,10 +414,10 @@ export function tableEncoder({ prunedInstructions: prunedInstructions }) {
   generatedColumns = [
     { title: "ISA", width: 25 },
     { title: "Mnemonic", width: 100 },
-    { title: "Pseudocode", width: 300 },
+    { title: "Pseudocode", width: 350 },
     { title: "Description", width: 350 },
     { title: "Type", width: 50 },
-    { title: "Architecture", width: 100 },
+    { title: "Architecture", width: 120 },
     { title: "Extension", width: 50 },
     { title: "Fields", width: 300 },
   ];

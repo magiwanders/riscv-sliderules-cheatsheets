@@ -41,9 +41,9 @@ export function updatePruned() {
   var { tabulatedData, generatedColumns } = tableEncoder({
     prunedInstructions: prunedInstructions,
   });
-
+  document.getElementById("spreadsheet").innerHTML = "";
   jspreadsheet(document.getElementById("spreadsheet"), {
     data: tabulatedData,
     columns: generatedColumns,
-  });
+      });
 }
