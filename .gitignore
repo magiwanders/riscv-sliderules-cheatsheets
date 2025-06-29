@@ -11,7 +11,6 @@ notes.txt
 notes.md
 
 node_modules
-dist
 dist-ssr
 *.local
 

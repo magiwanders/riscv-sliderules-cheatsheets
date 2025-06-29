@@ -1,0 +1,7754 @@
+{
+  "add": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 + rs2",
+    "description": "Addition",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sub": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 - rs2",
+    "description": "Subtraction",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "xor": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 ^ rs2",
+    "description": "Bitwise XOR",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "slt": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = { 31'b0, ( rs1[31] == rs2[31] ) ? (rs1<rs2) : (rs1[31])}",
+    "description": "Set Less Than",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "or": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 | rs2",
+    "description": "Bitwise OR",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sll": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 <<(zero extends) rs2",
+    "description": "Shift Left Logical",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srl": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 (zero extends)>> rs2",
+    "description": "Shift Right Logical",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sra": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 (msb extends)>> rs2",
+    "description": "Shift Right Arithmetic",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sltu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = { 31'b0, rs1 < rs2 }",
+    "description": "Set Less Than Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "and": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 & rs2",
+    "description": "Bitwise AND",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "addi": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = rs1 + imm",
+    "description": "Add Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "slti": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = (rs1 < imm) ? 1 : 0",
+    "description": "Set Less Than Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sltiu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = (rs1 < imm) ? 1 : 0",
+    "description": "Set Less Than Immediate Unsigned",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "xori": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = rs1 ^ imm",
+    "description": "Bitwise XOR Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "ori": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = rs1 | imm",
+    "description": "Bitwise OR Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "andi": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = rs1 & imm",
+    "description": "Bitwise AND Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lb": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Byte",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lh": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Halfword",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Word",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lbu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Byte Unsigned",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lhu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Halfword Unsigned",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "jalr": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = PC + 4; PC = (rs1 + imm) & ~1",
+    "description": "Jump and Link Register",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 103,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lui": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm"
+    ],
+    "pseudocode": "rd = imm << 12",
+    "description": "Load Upper Immediate",
+    "type": "U",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 55,
+        "mask": 127
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "auipc": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm"
+    ],
+    "pseudocode": "rd = PC + imm",
+    "description": "Add Upper Immediate to PC",
+    "type": "U",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 23,
+        "mask": 127
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "jal": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm"
+    ],
+    "pseudocode": "rd = PC + 4; PC = PC + imm",
+    "description": "Jump and Link",
+    "type": "J",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 111,
+        "mask": 127
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "beq": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "if(rs1 == rs2) PC = PC + imm",
+    "description": "Branch Equal",
+    "type": "B",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 99,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "bne": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "if(rs1 != rs2) PC = PC + imm",
+    "description": "Branch Not Equal",
+    "type": "B",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 99,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "blt": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "if(rs1 < rs2) PC = PC + imm",
+    "description": "Branch Less Than",
+    "type": "B",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 99,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "bge": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "if(rs1 >= rs2) PC = PC + imm",
+    "description": "Branch Greater Than or Equal",
+    "type": "B",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 99,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "bltu": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "if(rs1 < rs2) PC = PC + imm",
+    "description": "Branch Less Than Unsigned",
+    "type": "B",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 99,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "bgeu": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "if(rs1 >= rs2) PC = PC + imm",
+    "description": "Branch Greater Than or Equal Unsigned",
+    "type": "B",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 99,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "sb": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "Memory[rs1 + imm] = rs2[0:7]",
+    "description": "Store Byte",
+    "type": "S",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 35,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "sh": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "Memory[rs1 + imm] = rs2[0:15]",
+    "description": "Store Halfword",
+    "type": "S",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 35,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "sw": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "Memory[rs1 + imm] = rs2",
+    "description": "Store Word",
+    "type": "S",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 35,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "slli": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 << shamt",
+    "description": "Shift Left Logical Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srli": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >>> shamt",
+    "description": "Shift Right Logical Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srai": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt",
+    "description": "Shift Right Arithmetic Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fence": {
+    "ISA": "RV",
+    "assembly": [
+      "pred",
+      "succ"
+    ],
+    "pseudocode": "Fence(pred, succ)",
+    "description": "Synchronize",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 15,
+        "mask": 127
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "succ": {
+        "mask": 15728640
+      },
+      "pred": {
+        "mask": 251658240
+      },
+      "fm": {
+        "mask": -268435456
+      }
+    }
+  },
+  "ecall": {
+    "ISA": "RV",
+    "assembly": [
+      "ecall"
+    ],
+    "pseudocode": "ECALL",
+    "description": "Environment Call",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rd": {
+        "value": 0,
+        "mask": 3968
+      },
+      "rs1": {
+        "value": 0,
+        "mask": 1015808
+      },
+      "funct12": {
+        "value": 0,
+        "mask": -1048576
+      }
+    }
+  },
+  "ebreak": {
+    "ISA": "RV",
+    "assembly": [
+      "ebreak"
+    ],
+    "pseudocode": "EBREAK",
+    "description": "Environment Breakpoint",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rd": {
+        "value": 0,
+        "mask": 3968
+      },
+      "rs1": {
+        "value": 0,
+        "mask": 1015808
+      },
+      "funct12": {
+        "value": 1,
+        "mask": -1048576
+      }
+    }
+  },
+  "lwu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm(rs1)"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Word Unsigned",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "ld": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm(rs1)"
+    ],
+    "pseudocode": "rd = M[rs1 + imm]",
+    "description": "Load Doubleword",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 3,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sd": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "imm(rs1)"
+    ],
+    "pseudocode": "M[rs1 + imm] = rs2",
+    "description": "Store Doubleword",
+    "type": "S",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 35,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "slli64": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 << shamt",
+    "description": "Shift Left Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "imm": {
+        "value": 0,
+        "mask": -67108864
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 66060288
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srli64": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (logical)",
+    "description": "Shift Right Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "imm": {
+        "value": 0,
+        "mask": -67108864
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 66060288
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srai64": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (arithmetic)",
+    "description": "Shift Right Arithmetic Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 19,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "imm": {
+        "value": 16,
+        "mask": -67108864
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 66060288
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "addiw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = rs1 + imm (signed immediate)",
+    "description": "Add Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "slliw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 << shamt (64-bit)",
+    "description": "Shift Left Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srliw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (logical, 64-bit)",
+    "description": "Shift Right Logical Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sraiw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "shamt"
+    ],
+    "pseudocode": "rd = rs1 >> shamt (arithmetic, 64-bit)",
+    "description": "Shift Right Arithmetic Immediate (64-bit)",
+    "type": "I",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 27,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 20480
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "shamt": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "addw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 + rs2 (64-bit)",
+    "description": "Add (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "subw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 - rs2 (64-bit)",
+    "description": "Subtract (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sllw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 << rs2 (64-bit)",
+    "description": "Shift Left Logical (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "srlw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 >> rs2 (logical, 64-bit)",
+    "description": "Shift Right Logical (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sraw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 >> rs2 (arithmetic, 64-bit)",
+    "description": "Shift Right Arithmetic (64-bit)",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "I",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 20480
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fence_i": {
+    "ISA": "RV",
+    "assembly": [
+      "imm",
+      "rs1"
+    ],
+    "pseudocode": "fence",
+    "description": "Fence for instruction stream",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zifencei",
+    "fields": {
+      "opcode": {
+        "value": 15,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrw": {
+    "ISA": "RV",
+    "assembly": [
+      "csr",
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = rs1",
+    "description": "Atomic Read and Write of CSR",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrs": {
+    "ISA": "RV",
+    "assembly": [
+      "csr",
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] | rs1",
+    "description": "Atomic Read and Set of CSR Bits",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrc": {
+    "ISA": "RV",
+    "assembly": [
+      "csr",
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] & (~rs1)",
+    "description": "Atomic Read and Clear of CSR Bits",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrwi": {
+    "ISA": "RV",
+    "assembly": [
+      "uimm",
+      "rd",
+      "csr"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = uimm",
+    "description": "Atomic Read and Write of CSR with Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "uimm": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrsi": {
+    "ISA": "RV",
+    "assembly": [
+      "uimm",
+      "rd",
+      "csr"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] | uimm",
+    "description": "Atomic Read and Set of CSR Bits with Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "uimm": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "csrrci": {
+    "ISA": "RV",
+    "assembly": [
+      "uimm",
+      "rd",
+      "csr"
+    ],
+    "pseudocode": "rd = CSRs[csr]; CSRs[csr] = CSRs[csr] & (~uimm)",
+    "description": "Atomic Read and Clear of CSR Bits with Immediate",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "Zicsr",
+    "fields": {
+      "opcode": {
+        "value": 115,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "csr": {
+        "mask": -1048576
+      },
+      "uimm": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mul": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 * rs2",
+    "description": "Multiply",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulh": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (rs1 * rs2) >> XLEN",
+    "description": "Multiply High",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulhsu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (rs1 * rs2) >> XLEN",
+    "description": "Multiply High Signed Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulhu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (rs1 * rs2) >> XLEN",
+    "description": "Multiply High Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "div": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2",
+    "description": "Divide",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "divu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2",
+    "description": "Divide Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "rem": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2",
+    "description": "Remainder",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "remu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2",
+    "description": "Remainder Unsigned",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 51,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "mulw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 * rs2 (signed 64x64-bit multiplication, result stored in 64-bit rd)",
+    "description": "Multiply Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "divw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2 (signed 64/64-bit division, quotient stored in 64-bit rd)",
+    "description": "Divide Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "divuw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 / rs2 (unsigned 64/64-bit division, quotient stored in 64-bit rd)",
+    "description": "Divide Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "remw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2 (signed 64/64-bit remainder, result stored in 64-bit rd)",
+    "description": "Remainder Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "remuw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs1 % rs2 (unsigned 64/64-bit remainder, result stored in 64-bit rd)",
+    "description": "Remainder Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "M",
+    "fields": {
+      "opcode": {
+        "value": 59,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 28672
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lr_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "aq",
+      "rl"
+    ],
+    "pseudocode": "rd = M[rs1]; if aq then aq = 0; if rl then rl = 0;",
+    "description": "Load Reserved (Word)",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 2,
+        "mask": -134217728
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sc_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "aq",
+      "rl",
+      "rs2"
+    ],
+    "pseudocode": "rd = M[rs1]; if aq then aq = 0; if rl then rl = 0; if successful SC, rd = 0; else rd = 1;",
+    "description": "Store Conditional (Word)",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 3,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoswap_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = M[rs1]; if aq then aq = 0; if rl then rl = 0; M[rs1] = rs2;",
+    "description": "Atomic Swap (Word)",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 1,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoadd_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd + rs2;",
+    "description": "Atomic Add Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 0,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoxor_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd ^ rs2;",
+    "description": "Atomic XOR Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 4,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoand_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd & rs2;",
+    "description": "Atomic AND Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 12,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoor_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd | rs2;",
+    "description": "Atomic OR Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 8,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomin_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = min(rd, rs2);",
+    "description": "Atomic Minimum Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 16,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomax_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = max(rd, rs2);",
+    "description": "Atomic Maximum Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 20,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amominu_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = minu(rd, rs2);",
+    "description": "Atomic Minimum Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 24,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomaxu_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = maxu(rd, rs2);",
+    "description": "Atomic Maximum Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 28,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "lr_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1];",
+    "description": "Load Reserved Doubleword",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 2,
+        "mask": -134217728
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "sc_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "if (Memory[rs1] == rd) { Memory[rs1] = rs2; rd = 1; } else rd = 0;",
+    "description": "Store Conditional Doubleword",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 3,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoswap_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rs2;",
+    "description": "Atomic Swap Doubleword",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 1,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoadd_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd + rs2;",
+    "description": "Atomic Add Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 1,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoxor_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd ^ rs2;",
+    "description": "Atomic XOR Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 4,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoand_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd & rs2;",
+    "description": "Atomic AND Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 12,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amoor_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = rd | rs2;",
+    "description": "Atomic OR Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 8,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomin_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = min(rd, rs2);",
+    "description": "Atomic Minimum Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 16,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomax_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = max(rd, rs2);",
+    "description": "Atomic Maximum Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 20,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amominu_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = min(rd, rs2);",
+    "description": "Atomic Minimum Unsigned Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 24,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "amomaxu_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = Memory[rs1]; Memory[rs1] = max(rd, rs2);",
+    "description": "Atomic Maximum Unsigned Double",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "A",
+    "fields": {
+      "opcode": {
+        "value": 47,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "funct5": {
+        "value": 28,
+        "mask": -134217728
+      },
+      "aq": {
+        "mask": 67108864
+      },
+      "rl": {
+        "mask": 33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "flw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "f(rd) = Memory[rs1 + imm];",
+    "description": "Load Floating-Point Word",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 7,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "Memory[rs1 + imm] = f(rs2);",
+    "description": "Store Floating-Point Word",
+    "type": "S",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 39,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "fmadd_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "f(rd) = f(rs1) * f(rs2) + f(rs3);",
+    "description": "Floating-Point Multiply-Add Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 67,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 0,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmsub_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "f(rd) = f(rs1) * f(rs2) - f(rs3);",
+    "description": "Floating-Point Multiply-Subtract Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 71,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 0,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fnmsub_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "f(rd) = -f(rs1) * f(rs2) - f(rs3);",
+    "description": "Floating-Point Negate-Multiply-Subtract Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 75,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 0,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fnmadd_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "f(rd) = -f(rs1) * f(rs2) + f(rs3);",
+    "description": "Floating-Point Negate-Multiply-Add Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 79,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 0,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fadd_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) + f(rs2);",
+    "description": "Floating-Point Add Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 0,
+        "mask": -33554432
+      },
+      "rm": {
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsub_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) - f(rs2);",
+    "description": "Floating-Point Subtract Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 4,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmul_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) * f(rs2);",
+    "description": "Floating-Point Multiply Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 8,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fdiv_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) / f(rs2);",
+    "description": "Floating-Point Divide Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 12,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fsqrt_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "f(rd) = sqrt(f(rs1));",
+    "description": "Floating-Point Square Root Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 44,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fsgnj_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) with sign of f(rs2);",
+    "description": "Floating-Point Sign Inject Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 16,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsgnjn_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) with sign of -f(rs2);",
+    "description": "Floating-Point Sign Inject Negate Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 16,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsgnjx_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = f(rs1) with sign of f(rs2), and value of abs(f(rs1));",
+    "description": "Floating-Point Sign Inject with Exchange Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 16,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fmin_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = min(f(rs1), f(rs2));",
+    "description": "Floating-Point Minimum Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 20,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fmax_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "f(rd) = max(f(rs1), f(rs2));",
+    "description": "Floating-Point Maximum Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 20,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fcvt_w_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = (int32_t)f(rs1);",
+    "description": "Floating-Point Convert to Signed Word Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 96,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_wu_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = (uint32_t)f(rs1);",
+    "description": "Floating-Point Convert to Unsigned Word Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 96,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 1,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmv_x_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = rs1;",
+    "description": "Floating-Point Move to Integer Register Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 112,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "feq_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (f(rs1) == f(rs2)) ? 1 : 0;",
+    "description": "Floating-Point Equal Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 80,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "flt_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (f(rs1) < f(rs2)) ? 1 : 0;",
+    "description": "Floating-Point Less Than Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 80,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fle_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = (f(rs1) <= f(rs2)) ? 1 : 0;",
+    "description": "Floating-Point Less Than or Equal Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 80,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fclass_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = fclass_s(rs1);",
+    "description": "Floating-Point Classify Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 112,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fcvt_s_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f32_to_i32(rs1, RM, true);",
+    "description": "Floating-Point Convert to Signed Word Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 104,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_s_wu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f32_to_ui32(rs1, RM, true);",
+    "description": "Floating-Point Convert to Unsigned Word Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 104,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 1,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmv_w_x": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = rs1;",
+    "description": "Floating-Point Move to Integer Register Single Precision",
+    "type": "R4",
+    "arch_width": [
+      32
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 120,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fcvt_l_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_i64(rs1, RM, true);",
+    "description": "Floating-Point Convert to Signed Long Double Precision",
+    "type": "R4",
+    "arch_width": [
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 96,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 2,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_lu_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_ui64(rs1, RM, true);",
+    "description": "Floating-Point Convert to Unsigned Long Double Precision",
+    "type": "R4",
+    "arch_width": [
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 96,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 3,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_s_l": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_f32(rs1, RM);",
+    "description": "Floating-Point Convert to Single Precision from Long Double Precision",
+    "type": "R4",
+    "arch_width": [
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 104,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 2,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_s_lu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_f32(rs1, RM);",
+    "description": "Floating-Point Convert to Single Precision from Unsigned Long Double Precision",
+    "type": "R4",
+    "arch_width": [
+      64
+    ],
+    "extension": "F",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 104,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 3,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fld": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "rd = Memory[rs1 + imm];",
+    "description": "Floating-Point Load Double Precision",
+    "type": "I",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 7,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsd": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "imm"
+    ],
+    "pseudocode": "Memory[rs1 + imm] = rs2;",
+    "description": "Floating-Point Store Double Precision",
+    "type": "S",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 39,
+        "mask": 127
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      }
+    }
+  },
+  "fmadd_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "rd = f64_mulAdd(rs1, rs2, rs3, RM);",
+    "description": "Floating-Point Multiply-Add Double Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 67,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 1,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmsub_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "rd = f64_mulAdd(rs1, rs2, rs3, RM);",
+    "description": "Floating-Point Multiply-Subtract Double Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 71,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 1,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fnmsub_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "rd = -f64_mulAdd(rs1, rs2, rs3, RM);",
+    "description": "Floating-Point Negate-Multiply-Subtract Double Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 75,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 1,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fnmadd_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2",
+      "rs3"
+    ],
+    "pseudocode": "rd = -f64_mulAdd(rs1, rs2, rs3, RM);",
+    "description": "Floating-Point Negate-Multiply-Add Double Precision",
+    "type": "R4",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 79,
+        "mask": 127
+      },
+      "funct2": {
+        "value": 1,
+        "mask": 100663296
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rs3": {
+        "mask": -134217728
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fadd_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_add(rs1, rs2, RM);",
+    "description": "Floating-Point Add Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 1,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fsub_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_sub(rs1, rs2, RM);",
+    "description": "Floating-Point Subtract Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 5,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmul_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_mul(rs1, rs2, RM);",
+    "description": "Floating-Point Multiply Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 9,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fdiv_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_div(rs1, rs2, RM);",
+    "description": "Floating-Point Divide Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 13,
+        "mask": -33554432
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fsqrt_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = sqrt(f(rs1));",
+    "description": "Floating-Point Divide Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 45,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fsgnj_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_gnj(rs1, rs2, false);",
+    "description": "Floating-Point Sign Injection Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 17,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsgnjn_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_gnj(rs1, rs2, true);",
+    "description": "Floating-Point Sign Injection (Negate) Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 17,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fsgnjx_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_gnjn(rs1, rs2);",
+    "description": "Floating-Point Sign Injection (XOR) Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 17,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fmin_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_min(rs1, rs2);",
+    "description": "Floating-Point Minimum Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 21,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fmax_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_max(rs1, rs2);",
+    "description": "Floating-Point Maximum Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 21,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fcvt_s_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f32_to_f64(rs1, RM);",
+    "description": "Floating-Point Convert to Single Precision from Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 32,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 1,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_d_s": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_f32(rs1, RM);",
+    "description": "Floating-Point Convert to Double Precision from Single Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 33,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "feq_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_eq(rs1, rs2);",
+    "description": "Floating-Point Equality Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 81,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "flt_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_lt(rs1, rs2);",
+    "description": "Floating-Point Less Than Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 81,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fle_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "rs2"
+    ],
+    "pseudocode": "rd = f64_le(rs1, rs2);",
+    "description": "Floating-Point Less Than or Equal Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 81,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rs2": {
+        "mask": 32505856
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fclass_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_classify(rs1);",
+    "description": "Floating-Point Classify Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 113,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 28672
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fcvt_w_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_i32(rs1, RM, true);",
+    "description": "Floating-Point Convert to Signed Word Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 97,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_wu_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_ui32(rs1, RM, true);",
+    "description": "Floating-Point Convert to Unsigned Word Double Precision",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 97,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 1,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_d_w": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = i32_to_f64(rs1, RM);",
+    "description": "Floating-Point Convert to Double Precision from Signed Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 105,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_d_wu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = ui32_to_f64(rs1, RM);",
+    "description": "Floating-Point Convert to Double Precision from Unsigned Word",
+    "type": "R",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 105,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 1,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_l_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_i64(rs1, RM, true);",
+    "description": "Floating-Point Convert to Signed Long Double Precision",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 97,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 2,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_lu_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = f64_to_ui64(rs1, RM, true);",
+    "description": "Floating-Point Convert to Unsigned Long Double Precision",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 97,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 3,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmv_x_d": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = rs1;",
+    "description": "Floating-Point Move Double Precision",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 113,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "fcvt_d_l": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = i64_to_f64(rs1, RM);",
+    "description": "Floating-Point Convert to Double Precision from Signed Long",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 105,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 2,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fcvt_d_lu": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = ui64_to_f64(rs1, RM);",
+    "description": "Floating-Point Convert to Double Precision from Unsigned Long",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 105,
+        "mask": -33554432
+      },
+      "rs2": {
+        "value": 3,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      },
+      "rm": {
+        "mask": 28672
+      }
+    }
+  },
+  "fmv_d_x": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "rd = rs1;",
+    "description": "Floating-Point Move Double Precision",
+    "type": "R",
+    "arch_width": [
+      64
+    ],
+    "extension": "D",
+    "fields": {
+      "opcode": {
+        "value": 83,
+        "mask": 127
+      },
+      "funct7": {
+        "value": 121,
+        "mask": -33554432
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 28672
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 32505856
+      },
+      "rs1": {
+        "mask": 1015808
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "illegal_instruction": {
+    "ISA": "RV",
+    "assembly": [
+      "imm"
+    ],
+    "pseudocode": "Raise an illegal instruction exception;",
+    "description": "Illegal Instruction",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 0,
+        "mask": true
+      },
+      "imm_value": {
+        "value": 0,
+        "mask": 8160
+      },
+      "rd": {
+        "value": 0,
+        "mask": 28
+      }
+    }
+  },
+  "c_addi4spn": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzuimm"
+    ],
+    "pseudocode": "addi rd' = sp + nzuimm = sp + 4*imm",
+    "description": "Compressed Add imm*4 to SP",
+    "type": "CIW",
+    "arch_width": [
+      "RES"
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 0,
+        "mask": true
+      },
+      "nzuimm": {
+        "mask": 8160
+      },
+      "rd": {
+        "mask": 28
+      }
+    }
+  },
+  "c_fld": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "uimm"
+    ],
+    "pseudocode": "rd = M64[rs1 + uimm];",
+    "description": "Compressed Load Double Floating-Point",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 7168
+      },
+      "uimm2": {
+        "mask": 96
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rd": {
+        "mask": 28
+      }
+    }
+  },
+  "c_lq": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "uimm"
+    ],
+    "pseudocode": "rd = M128[rs1 + uimm];",
+    "description": "Compressed Load Quadruple Floating-Point",
+    "type": "CIW",
+    "arch_width": [
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 6144
+      },
+      "m1": {
+        "mask": 1024
+      },
+      "uimm2": {
+        "mask": 96
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rd": {
+        "mask": 28
+      }
+    }
+  },
+  "c_lw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "uimm"
+    ],
+    "pseudocode": "rd' <- M[ rs1' + offset ];",
+    "description": "Compressed Load Word",
+    "type": "CL",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 57344
+      },
+      "uimm": {
+        "mask": 7168
+      },
+      "m2": {
+        "mask": 64
+      },
+      "m1": {
+        "mask": 32
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rd": {
+        "mask": 28
+      }
+    }
+  },
+  "c_flw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "uimm"
+    ],
+    "pseudocode": "rd = M32[rs1 + uimm];",
+    "description": "Compressed Load Float",
+    "type": "CIW",
+    "arch_width": [
+      32
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 57344
+      },
+      "uimm": {
+        "mask": 7168
+      },
+      "m2": {
+        "mask": 64
+      },
+      "m1": {
+        "mask": 32
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rd": {
+        "mask": 28
+      }
+    }
+  },
+  "c_ld": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1",
+      "uimm"
+    ],
+    "pseudocode": "rd = M64[rs1 + uimm];",
+    "description": "Compressed Load Double",
+    "type": "CI",
+    "arch_width": [
+      64,
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 7168
+      },
+      "uimm2": {
+        "mask": 96
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rd": {
+        "mask": 28
+      }
+    }
+  },
+  "c_fsd": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M64[rs1 + uimm] = rs2;",
+    "description": "Compressed Store Double Floating-Point",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 7168
+      },
+      "uimm2": {
+        "mask": 96
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 28
+      }
+    }
+  },
+  "c_sq": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M128[rs1 + uimm] = rs2;",
+    "description": "Compressed Store Quadruple Floating-Point",
+    "type": "CI",
+    "arch_width": [
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 6144
+      },
+      "m1": {
+        "mask": 1024
+      },
+      "uimm2": {
+        "mask": 96
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 28
+      }
+    }
+  },
+  "c_sw": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M32[rs1 + uimm] = rs2;",
+    "description": "Compressed Store Word",
+    "type": "CS",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 57344
+      },
+      "uimm": {
+        "mask": 7168
+      },
+      "m2": {
+        "mask": 64
+      },
+      "m1": {
+        "mask": 32
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 28
+      }
+    }
+  },
+  "c_fsw": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M32[rs1 + uimm] = rs2;",
+    "description": "Compressed Store Float",
+    "type": "CIW",
+    "arch_width": [
+      32
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 57344
+      },
+      "uimm": {
+        "mask": 7168
+      },
+      "m2": {
+        "mask": 64
+      },
+      "m1": {
+        "mask": 32
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 28
+      }
+    }
+  },
+  "c_sd": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M64[rs1 + uimm] = rs2;",
+    "description": "Compressed Store Double",
+    "type": "CI",
+    "arch_width": [
+      64,
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 0,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 7168
+      },
+      "uimm2": {
+        "mask": 96
+      },
+      "rs1": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 28
+      }
+    }
+  },
+  "c_nop": {
+    "ISA": "RV",
+    "assembly": [],
+    "pseudocode": "",
+    "description": "Compressed No OPeration",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 57344
+      },
+      "op_val": {
+        "value": 0
+      }
+    }
+  },
+  "c_addi": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzimm"
+    ],
+    "pseudocode": "rd = rd + sext(nzimm);",
+    "description": "Compressed Add Immediate",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "imm1": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_jal": {
+    "ISA": "RV",
+    "assembly": [
+      "imm",
+      "rd"
+    ],
+    "pseudocode": "rd = PC + sext(imm);",
+    "description": "Compressed Jump and Link",
+    "type": "CJ",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "m2": {
+        "mask": 2048
+      },
+      "imm2": {
+        "mask": 1536
+      },
+      "m3": {
+        "mask": 256
+      },
+      "m4": {
+        "mask": 128
+      },
+      "m5": {
+        "mask": 64
+      },
+      "imm1": {
+        "mask": 56
+      },
+      "m6": {
+        "mask": 4
+      }
+    }
+  },
+  "c_addiw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzimm"
+    ],
+    "pseudocode": "rd = rd + sext(nzimm);",
+    "description": "Compressed Add Immediate Word",
+    "type": "CW",
+    "arch_width": [
+      64,
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "imm1": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_li": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm"
+    ],
+    "pseudocode": "rd = sext(imm);",
+    "description": "Compressed Load Immediate",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "imm1": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_addi16sp": {
+    "ISA": "RV",
+    "assembly": [
+      "nzuimm"
+    ],
+    "pseudocode": "sp = sp + sext(nzuimm);",
+    "description": "Compressed Add Immediate to SP",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 57344
+      },
+      "nzuimm5": {
+        "mask": 4096
+      },
+      "nzuimm2": {
+        "mask": 24
+      },
+      "nzuimm1": {
+        "mask": 4
+      },
+      "nzuimm3": {
+        "mask": 32
+      },
+      "nzuimm4": {
+        "mask": 64
+      },
+      "rd": {
+        "value": 2,
+        "mask": 3968
+      }
+    }
+  },
+  "c_lui": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzimm"
+    ],
+    "pseudocode": "rd = imm << 12 (zero extends);",
+    "description": "Compressed Load Upper Immediate",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 57344
+      },
+      "imm1": {
+        "mask": 124
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_srli": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzuimm",
+      "rs1"
+    ],
+    "pseudocode": "rd = rd (zero)>> shamt;",
+    "description": "Compressed Shift Right Logical Immediate",
+    "type": "CB",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 32,
+        "mask": 64512
+      },
+      "nzuimm": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_srai": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzuimm",
+      "rs1"
+    ],
+    "pseudocode": "rd = rd (msb)>> nzuimm;",
+    "description": "Compressed Shift Right Arithmetic Immediate",
+    "type": "CB",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 33,
+        "mask": 64512
+      },
+      "nzuimm": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_andi": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "imm"
+    ],
+    "pseudocode": "rd &= imm;",
+    "description": "Compressed AND Immediate",
+    "type": "CB",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 4,
+        "mask": 57344
+      },
+      "funct2": {
+        "value": 2,
+        "mask": 3072
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "imm1": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_sub": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd' -= rs';",
+    "description": "Compressed Subtract",
+    "type": "CA",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 35,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 0,
+        "mask": 96
+      },
+      "rs2": {
+        "mask": 28
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_xor": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd' ^= rs';",
+    "description": "Compressed XOR",
+    "type": "CA",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 35,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 1,
+        "mask": 96
+      },
+      "rs2": {
+        "mask": 28
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_or": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd' |= rs';",
+    "description": "Compressed OR",
+    "type": "CA",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 35,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 2,
+        "mask": 96
+      },
+      "rs2": {
+        "mask": 28
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_and": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2",
+      "rs1"
+    ],
+    "pseudocode": "rd = rd & rs;",
+    "description": "Compressed AND",
+    "type": "CA",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 35,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 3,
+        "mask": 96
+      },
+      "rs2": {
+        "mask": 28
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_subw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd = rd - rs2;",
+    "description": "Compressed Subtract Word",
+    "type": "CA",
+    "arch_width": [
+      64,
+      128,
+      "RES"
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 39,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 0,
+        "mask": 96
+      },
+      "rs2": {
+        "mask": 28
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_addw": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd = rd + rs2;",
+    "description": "Compressed Add Word",
+    "type": "CA",
+    "arch_width": [
+      64,
+      128,
+      "RES"
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 39,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 1,
+        "mask": 96
+      },
+      "rs2": {
+        "mask": 28
+      },
+      "rd": {
+        "mask": 896
+      }
+    }
+  },
+  "c_reserved1": {
+    "ISA": "RV",
+    "assembly": [],
+    "pseudocode": "",
+    "description": "Reserved",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 39,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 2,
+        "mask": 96
+      }
+    }
+  },
+  "c_reserved2": {
+    "ISA": "RV",
+    "assembly": [],
+    "pseudocode": "",
+    "description": "Reserved",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct6": {
+        "value": 39,
+        "mask": 64512
+      },
+      "funct2": {
+        "value": 3,
+        "mask": 96
+      }
+    }
+  },
+  "c_j": {
+    "ISA": "RV",
+    "assembly": [
+      "imm"
+    ],
+    "pseudocode": "PC += sext(imm);",
+    "description": "Compressed Jump",
+    "type": "CJ",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "m2": {
+        "mask": 2048
+      },
+      "imm2": {
+        "mask": 1536
+      },
+      "m3": {
+        "mask": 256
+      },
+      "m4": {
+        "mask": 128
+      },
+      "m5": {
+        "mask": 64
+      },
+      "imm1": {
+        "mask": 56
+      },
+      "m6": {
+        "mask": 4
+      }
+    }
+  },
+  "c_beqz": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "if (rs1 == 0) PC += sext(imm);",
+    "description": "Compressed Branch if Equal to Zero",
+    "type": "CB",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 57344
+      },
+      "imm1": {
+        "mask": 24
+      },
+      "imm2": {
+        "mask": 96
+      },
+      "imm3": {
+        "mask": 3072
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "m2": {
+        "mask": 4
+      },
+      "rs1": {
+        "mask": 896
+      }
+    }
+  },
+  "c_bnez": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1",
+      "imm"
+    ],
+    "pseudocode": "if (rs1 != 0) PC += sext(imm);",
+    "description": "Compressed Branch if Not Equal to Zero",
+    "type": "CB",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 1,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 57344
+      },
+      "imm1": {
+        "mask": 24
+      },
+      "imm2": {
+        "mask": 96
+      },
+      "imm3": {
+        "mask": 3072
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "m2": {
+        "mask": 4
+      },
+      "rs1": {
+        "mask": 896
+      }
+    }
+  },
+  "c_slli": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "nzuimm"
+    ],
+    "pseudocode": "rd = rs1 << nzuimm;",
+    "description": "Compressed Shift Left Logical Immediate",
+    "type": "CI",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 0,
+        "mask": 57344
+      },
+      "nzuimm": {
+        "mask": 124
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "rs1": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_fldsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "uimm"
+    ],
+    "pseudocode": "rd = M[sp + uimm];",
+    "description": "Compressed Load Doubleword from SP",
+    "type": "CL",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "uimm2": {
+        "mask": 28
+      },
+      "uimm1": {
+        "mask": 96
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_lqsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "uimm"
+    ],
+    "pseudocode": "rd = M[sp + uimm];",
+    "description": "Compressed Load Quadrupleword from SP",
+    "type": "CL",
+    "arch_width": [
+      128,
+      "RES"
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 1,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 60
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "m2": {
+        "mask": 64
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_lwsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "uimm"
+    ],
+    "pseudocode": "rd = M[sp + uimm];",
+    "description": "Compressed Load Word from SP",
+    "type": "CL",
+    "arch_width": [
+      "RES"
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 2,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "uimm2": {
+        "mask": 28
+      },
+      "uimm1": {
+        "mask": 96
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_flwsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "uimm"
+    ],
+    "pseudocode": "rd = M[sp + uimm];",
+    "description": "Compressed Load Float from SP",
+    "type": "CL",
+    "arch_width": [
+      32
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "uimm2": {
+        "mask": 28
+      },
+      "uimm1": {
+        "mask": 96
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_ldsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "uimm"
+    ],
+    "pseudocode": "rd = M[sp + uimm];",
+    "description": "Compressed Load Double from SP",
+    "type": "CL",
+    "arch_width": [
+      64,
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 3,
+        "mask": 57344
+      },
+      "m1": {
+        "mask": 4096
+      },
+      "uimm2": {
+        "mask": 28
+      },
+      "uimm1": {
+        "mask": 96
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_jr": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs1"
+    ],
+    "pseudocode": "PC = rs1;",
+    "description": "Compressed Jump Register",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct4": {
+        "value": 8,
+        "mask": 61440
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 124
+      },
+      "rs1": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_mv": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd = rs2;",
+    "description": "Compressed Move",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct4": {
+        "value": 8,
+        "mask": 61440
+      },
+      "rs2": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_ebreak": {
+    "ISA": "RV",
+    "assembly": [],
+    "pseudocode": "Breakpoint",
+    "description": "Compressed EBREAK",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct4": {
+        "value": 9,
+        "mask": 61440
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 124
+      },
+      "rd": {
+        "value": 0,
+        "mask": 3968
+      }
+    }
+  },
+  "c_jalr": {
+    "ISA": "RV",
+    "assembly": [
+      "rs1"
+    ],
+    "pseudocode": "rd = PC + 2; PC = rs;",
+    "description": "Compressed Jump and Link Register",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct4": {
+        "value": 9,
+        "mask": 61440
+      },
+      "rs2": {
+        "value": 0,
+        "mask": 124
+      },
+      "rs1": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_add": {
+    "ISA": "RV",
+    "assembly": [
+      "rd",
+      "rs2"
+    ],
+    "pseudocode": "rd += rs;",
+    "description": "Compressed Add",
+    "type": "CR",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct4": {
+        "value": 9,
+        "mask": 61440
+      },
+      "rs2": {
+        "mask": 124
+      },
+      "rd": {
+        "mask": 3968
+      }
+    }
+  },
+  "c_fsdsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M[sp + uimm] = rs2;",
+    "description": "Compressed Store Double from SP",
+    "type": "CS",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 7168
+      },
+      "uimm2": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 124
+      }
+    }
+  },
+  "c_sqsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M[sp + uimm] = rs2;",
+    "description": "Compressed Store Quadruple from SP",
+    "type": "CS",
+    "arch_width": [
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 5,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 6144
+      },
+      "uimm2": {
+        "mask": 1920
+      },
+      "rs2": {
+        "mask": 124
+      }
+    }
+  },
+  "c_swsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M[sp + uimm] = rs2;",
+    "description": "Compressed Store Word from SP",
+    "type": "CSS",
+    "arch_width": [
+      32,
+      64
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 6,
+        "mask": 57344
+      },
+      "uimm2": {
+        "mask": 7680
+      },
+      "uimm1": {
+        "mask": 384
+      },
+      "rs2": {
+        "mask": 124
+      }
+    }
+  },
+  "c_fswsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M[sp + uimm] = rs2;",
+    "description": "Compressed Store Float from SP",
+    "type": "CSS",
+    "arch_width": [
+      32
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 57344
+      },
+      "uimm2": {
+        "mask": 7680
+      },
+      "uimm1": {
+        "mask": 384
+      },
+      "rs2": {
+        "mask": 124
+      }
+    }
+  },
+  "c_sdsp": {
+    "ISA": "RV",
+    "assembly": [
+      "rs2",
+      "uimm"
+    ],
+    "pseudocode": "M[sp + uimm] = rs2;",
+    "description": "Compressed Store Double from SP",
+    "type": "CSS",
+    "arch_width": [
+      64,
+      128
+    ],
+    "extension": "C",
+    "fields": {
+      "quadrant": {
+        "value": 2,
+        "mask": 3
+      },
+      "funct3": {
+        "value": 7,
+        "mask": 57344
+      },
+      "uimm1": {
+        "mask": 7168
+      },
+      "uimm2": {
+        "mask": 896
+      },
+      "rs2": {
+        "mask": 124
+      }
+    }
+  }
+}
